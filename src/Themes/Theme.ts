@@ -1,6 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
-export const Theme = {
+const Theme = {
   palette: {
     common: {
       black: "#000000",
@@ -16,3 +16,5 @@ export const Theme = {
     },
   },
 };
+
+export default Theme;

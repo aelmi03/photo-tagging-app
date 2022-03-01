@@ -16,7 +16,7 @@ const LevelCard = ({ imgSrc, level, characters }: any) => {
         <Character src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_740,w_1100/v1555285691/shape/mentalfloss/waldomain.png?itok=SpMGe5nM" />
         <Character src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_740,w_1100/v1555285691/shape/mentalfloss/waldomain.png?itok=SpMGe5nM" />
       </LevelInformation>
-      <LevelButton>Play</LevelButton>
+      <LevelButton color="red">Play</LevelButton>
     </LevelCardWrapper>
   );
 };

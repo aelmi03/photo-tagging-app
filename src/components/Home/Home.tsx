@@ -1,18 +1,8 @@
 import Levels from "./Levels";
 import LeaderboardPreview from "./LeadboardPreview";
 import styled from "styled-components";
-import firebase from "firebase/app";
-import levels from "../../utils/levels";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
 
 const Home = () => {
-  async function postLevels() {
-    await levels.forEach(async (levelObject) => {
-      const levelDoc = doc(getFirestore(), `levels/level${levelObject.level}`);
-      await setDoc(levelDoc, levelObject);
-    });
-  }
-  postLevels();
   return (
     <HomeWrapper>
       <Levels />

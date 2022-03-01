@@ -1,16 +1,35 @@
 import LevelCard from "./LevelCard";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { ILevel, ICharacter } from "../../types";
+import {
+  query,
+  collection,
+  onSnapshot,
+  getFirestore,
+  getDocs,
+} from "firebase/firestore";
 const Levels = () => {
-  return (
-    <LevelsContainer>
-      <LevelCard />
-      <LevelCard />
-      <LevelCard />
-      <LevelCard />
-      <LevelCard />
-      <LevelCard />
-    </LevelsContainer>
-  );
+  const [levels, setLevels] = useState<ILevel[] | null>();
+  const loadLevels = async () => {
+    const levelsQuery = query(collection(getFirestore(), "levels"));
+
+    const loadedLevels = await getDocs(levelsQuery);
+    setLevels(loadedLevels.docs.map((doc) => doc.data() as ILevel));
+  };
+  useEffect(() => {
+    loadLevels();
+  }, []);
+  const levelComponents = () => {
+    return levels?.map((level) => (
+      <LevelCard
+        imgSrc={level.imgSrc}
+        characters={level.characters}
+        level={level.level}
+      />
+    ));
+  };
+  return <LevelsContainer>{levelComponents()}</LevelsContainer>;
 };
 const LevelsContainer = styled.section`
   display: grid;

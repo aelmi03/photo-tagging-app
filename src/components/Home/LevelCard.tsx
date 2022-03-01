@@ -3,13 +3,12 @@ import Text from "../../utils/Text";
 import Character from "../../utils/Character";
 import LevelImg from "../../utils/LevelImg";
 import Button from "../../utils/Button";
-const LevelCard = ({ imgSrc, level, characters }: any) => {
+import { ILevel } from "../../types";
+
+const LevelCard = ({ imgSrc, level, characters }: ILevel) => {
   return (
     <LevelCardWrapper>
-      <LevelImg
-        src="https://firebasestorage.googleapis.com/v0/b/where-s-waldo-top.appspot.com/o/level-1.jpg?alt=media&token=277a291f-1e05-4378-9822-4a2851f51d7c"
-        alt="A waldo level"
-      />
+      <LevelImg src={imgSrc} alt="A waldo level" />
       <LevelInformation>
         <Text>Level 1</Text>
         <Character src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_740,w_1100/v1555285691/shape/mentalfloss/waldomain.png?itok=SpMGe5nM" />

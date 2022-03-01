@@ -31,7 +31,7 @@ const LevelInformation = styled.div`
   grid-template-columns: 1fr;
   grid-auto-flow: column;
   gap: 0.4rem;
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
   align-items: center;
 `;
 const LevelButton = styled(Button)`

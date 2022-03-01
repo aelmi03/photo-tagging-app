@@ -20,7 +20,7 @@ const LeaderboardPreviewWrapper = styled.div`
   border-radius: 5px;
   gap: 2rem;
   justify-items: center;
-  width: min(90%, 850px);
+  width: min(100%, 850px);
   background-color: ${({ theme }) => theme.palette.primary.main};
 `;
 const LeaderboardTitle = styled(Text)`

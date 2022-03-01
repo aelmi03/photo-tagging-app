@@ -18,5 +18,9 @@ const LevelsContainer = styled.section`
   justify-items: center;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  @media only screen and (min-width: 768px) {
+    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
 `;
 export default Levels;

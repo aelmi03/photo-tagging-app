@@ -16,7 +16,7 @@ const Theme: DefaultTheme = {
       contrastText: "#FFFFFF",
     },
     tertiary: {
-      main: "#f44333",
+      main: "#ef5350",
       contrastText: "#FFFFFF",
     },
   },

@@ -18,6 +18,5 @@ const LevelsContainer = styled.section`
   justify-items: center;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: 0.5rem;
 `;
 export default Levels;

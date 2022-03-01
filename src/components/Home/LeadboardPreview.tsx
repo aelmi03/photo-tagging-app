@@ -8,9 +8,9 @@ const LeaderboardPreview = () => {
       <LeaderboardTitle>
         See Where You Rank Against Other Players!
       </LeaderboardTitle>
-      <Button color="blue" border="white">
+      <LeaderboardButton color="blue" border="white">
         View Leaderboard
-      </Button>
+      </LeaderboardButton>
     </LeaderboardPreviewWrapper>
   );
 };
@@ -30,5 +30,14 @@ const LeaderboardTitle = styled(Text)`
   font-family: "Josefin Sans", sans-serif;
   text-align: center;
   font-weight: bold;
+`;
+
+const LeaderboardButton = styled(Button)`
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.common.white};
+    color: ${({ theme }) => theme.palette.primary.main};
+  }
 `;
 export default LeaderboardPreview;

@@ -1,14 +1,8 @@
 import LevelCard from "./LevelCard";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { ILevel, ICharacter } from "../../types";
-import {
-  query,
-  collection,
-  onSnapshot,
-  getFirestore,
-  getDocs,
-} from "firebase/firestore";
+import { ILevel } from "../../types";
+import { query, collection, getFirestore, getDocs } from "firebase/firestore";
 const Levels = () => {
   const [levels, setLevels] = useState<ILevel[] | null>();
   const loadLevels = async () => {
@@ -39,7 +33,7 @@ const LevelsContainer = styled.section`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   @media only screen and (min-width: 768px) {
     gap: 1.4rem;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   }
 `;
 export default Levels;

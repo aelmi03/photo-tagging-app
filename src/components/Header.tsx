@@ -5,8 +5,7 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderImg src={waldo} alt="Waldo leaning on a cane" />
-      <HeaderTitle>Where's </HeaderTitle>
-      <HeaderTitle>Waldo?</HeaderTitle>
+      <HeaderTitle>Where's Waldo?</HeaderTitle>
     </HeaderWrapper>
   );
 };

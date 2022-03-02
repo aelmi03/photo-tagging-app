@@ -5,6 +5,7 @@ import Home from "./Home/Home";
 import { query, collection, getFirestore, getDocs } from "firebase/firestore";
 import { ILevel } from "../types";
 import { useEffect, useState } from "react";
+import Game from "./Game/Game";
 const Main = () => {
   const [levels, setLevels] = useState<ILevel[] | null>(null);
   const loadLevels = async () => {
@@ -33,6 +34,7 @@ const Main = () => {
             </React.Fragment>
           }
         />
+        <Route path="/game" element={<Game />} />
       </Routes>
     </Router>
   );

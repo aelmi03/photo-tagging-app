@@ -4,11 +4,12 @@ import styled from "styled-components";
 import { ILevel } from "../../types";
 interface IProps {
   levels: ILevel[] | null;
+  changeCurrentLevel: (level: ILevel) => void;
 }
-const Home = ({ levels }: IProps) => {
+const Home = ({ levels, changeCurrentLevel }: IProps) => {
   return (
     <HomeWrapper>
-      <Levels levels={levels} />
+      <Levels levels={levels} changeCurrentLevel={changeCurrentLevel} />
       <LeaderboardPreview />
     </HomeWrapper>
   );

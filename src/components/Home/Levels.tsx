@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { ILevel } from "../../types";
 interface IProps {
   levels: ILevel[] | null;
+  changeCurrentLevel: (level: ILevel) => void;
 }
-const Levels = ({ levels }: IProps) => {
+const Levels = ({ levels, changeCurrentLevel }: IProps) => {
   const levelComponents = () => {
-    return levels?.map((level: any) => (
+    return levels?.map((level: ILevel) => (
       <LevelCard
-        imgSrc={level.imgSrc}
-        characters={level.characters}
-        level={level.level}
-        key={level.level}
+        gameLevel={level}
+        changeCurrentLevel={changeCurrentLevel}
+        key={level.imgSrc}
       />
     ));
   };

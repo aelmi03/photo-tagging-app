@@ -3,8 +3,12 @@ import Text from "../../utils/Text";
 import Character from "../../utils/Character";
 import Button from "../../utils/Button";
 import { ILevel } from "../../types";
-
-const LevelCard = ({ imgSrc, level, characters }: ILevel) => {
+interface IProps {
+  gameLevel: ILevel;
+  changeCurrentLevel: (level: ILevel) => void;
+}
+const LevelCard = ({ gameLevel, changeCurrentLevel }: IProps) => {
+  const { imgSrc, characters, level } = gameLevel;
   const loadCharacters = () => {
     return characters.map((character) => (
       <Character src={character.imgSrc} key={character.name} />
@@ -17,7 +21,14 @@ const LevelCard = ({ imgSrc, level, characters }: ILevel) => {
         <Text>Level {level}</Text>
         {loadCharacters()}
       </LevelInformation>
-      <LevelButton color="red">Play</LevelButton>
+      <LevelButton
+        color="red"
+        onClick={() => {
+          changeCurrentLevel(gameLevel);
+        }}
+      >
+        Play
+      </LevelButton>
     </LevelCardWrapper>
   );
 };

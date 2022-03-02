@@ -2,18 +2,7 @@ import LevelCard from "./LevelCard";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { ILevel } from "../../types";
-import { query, collection, getFirestore, getDocs } from "firebase/firestore";
-const Levels = () => {
-  const [levels, setLevels] = useState<ILevel[] | null>();
-  const loadLevels = async () => {
-    const levelsQuery = query(collection(getFirestore(), "levels"));
-
-    const loadedLevels = await getDocs(levelsQuery);
-    setLevels(loadedLevels.docs.map((doc) => doc.data() as ILevel));
-  };
-  useEffect(() => {
-    loadLevels();
-  }, []);
+const Levels = ({ levels }: ILevel[] | null) => {
   const levelComponents = () => {
     return levels?.map((level) => (
       <LevelCard

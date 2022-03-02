@@ -1,12 +1,11 @@
 import React from "react";
-import Header from "./components/Header";
-import Home from "./components/Home/Home";
+
+import Main from "./components/Main";
 function App() {
   console.log(process.env);
   return (
     <>
-      <Header />
-      <Home />
+      <Main />
     </>
   );
 }

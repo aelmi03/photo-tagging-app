@@ -1,11 +1,12 @@
 import Levels from "./Levels";
 import LeaderboardPreview from "./LeadboardPreview";
 import styled from "styled-components";
+import { ILevel } from "../../types";
 
-const Home = () => {
+const Home = ({ levels }: ILevel[] | null) => {
   return (
     <HomeWrapper>
-      <Levels />
+      <Levels levels={levels} />
       <LeaderboardPreview />
     </HomeWrapper>
   );

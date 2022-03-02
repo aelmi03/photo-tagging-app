@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Header";
-import Home from "./Home/Home";
+import Home from "./Home/";
 import { query, collection, getFirestore, getDocs } from "firebase/firestore";
 import { ILevel } from "../types";
 import { useEffect, useState } from "react";
-import Game from "./Game/Game";
+import Game from "./Game/";
 const Main = () => {
   const [levels, setLevels] = useState<ILevel[] | null>(null);
   const loadLevels = async () => {

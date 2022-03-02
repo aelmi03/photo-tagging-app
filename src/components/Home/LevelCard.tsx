@@ -6,7 +6,9 @@ import { ILevel } from "../../types";
 
 const LevelCard = ({ imgSrc, level, characters }: ILevel) => {
   const loadCharacters = () => {
-    return characters.map((character) => <Character src={character.imgSrc} />);
+    return characters.map((character) => (
+      <Character src={character.imgSrc} key={character.name} />
+    ));
   };
   return (
     <LevelCardWrapper>

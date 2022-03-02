@@ -1,14 +1,17 @@
 import LevelCard from "./LevelCard";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { ILevel } from "../../types";
-const Levels = ({ levels }: ILevel[] | null) => {
+interface IProps {
+  levels: ILevel[] | null;
+}
+const Levels = ({ levels }: IProps) => {
   const levelComponents = () => {
-    return levels?.map((level) => (
+    return levels?.map((level: any) => (
       <LevelCard
         imgSrc={level.imgSrc}
         characters={level.characters}
         level={level.level}
+        key={level.level}
       />
     ));
   };

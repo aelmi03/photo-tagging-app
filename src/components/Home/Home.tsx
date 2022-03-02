@@ -2,8 +2,10 @@ import Levels from "./Levels";
 import LeaderboardPreview from "./LeadboardPreview";
 import styled from "styled-components";
 import { ILevel } from "../../types";
-
-const Home = ({ levels }: ILevel[] | null) => {
+interface IProps {
+  levels: ILevel[] | null;
+}
+const Home = ({ levels }: IProps) => {
   return (
     <HomeWrapper>
       <Levels levels={levels} />

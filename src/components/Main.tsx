@@ -33,7 +33,10 @@ const Main = () => {
           element={
             <React.Fragment>
               <Header />
-              <Home levels={levels} changeCurrentLevel={changeCurrentLevel} />
+              <Home
+                levels={levels ? levels : []}
+                changeCurrentLevel={changeCurrentLevel}
+              />
             </React.Fragment>
           }
         />

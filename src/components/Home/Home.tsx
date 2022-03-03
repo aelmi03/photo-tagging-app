@@ -3,7 +3,7 @@ import LeaderboardPreview from "./LeadboardPreview";
 import styled from "styled-components";
 import { ILevel } from "../../types";
 interface IProps {
-  levels: ILevel[] | null;
+  levels: ILevel[];
   changeCurrentLevel: (level: ILevel) => void;
 }
 const Home = ({ levels, changeCurrentLevel }: IProps) => {

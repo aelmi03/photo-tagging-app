@@ -2,7 +2,7 @@ import LevelCard from "./LevelCard";
 import styled from "styled-components";
 import { ILevel } from "../../types";
 interface IProps {
-  levels: ILevel[] | null;
+  levels: ILevel[];
   changeCurrentLevel: (level: ILevel) => void;
 }
 const Levels = ({ levels, changeCurrentLevel }: IProps) => {

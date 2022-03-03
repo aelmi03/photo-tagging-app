@@ -11,7 +11,7 @@ const GameCharacters = ({ characters }: IProps) => {
   const navigate = useNavigate();
   const loadGameCharacters = () => {
     return characters.map((character) => (
-      <GameCharacter character={character} />
+      <GameCharacter character={character} key={character.name} />
     ));
   };
   return (
@@ -26,7 +26,7 @@ const GameCharacters = ({ characters }: IProps) => {
 
 const GameCharactersWrapper = styled.section`
   background-color: ${({ theme }) => theme.palette.primary.main};
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-items: flex-start;

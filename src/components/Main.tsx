@@ -2,10 +2,18 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home/";
-import { query, collection, getFirestore, getDocs } from "firebase/firestore";
+import {
+  query,
+  collection,
+  getFirestore,
+  getDocs,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import { ILevel } from "../types";
 import { useEffect, useState } from "react";
 import Game from "./Game/";
+import gameLevels from "../utils/levels";
 const Main = () => {
   const [levels, setLevels] = useState<ILevel[] | null>(null);
   const [currentLevel, setCurrentLevel] = useState<ILevel | null>(null);
@@ -25,6 +33,13 @@ const Main = () => {
     loadLevels();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const postsLevelsDB = async () => {
+    gameLevels.forEach(async (level: ILevel) => {
+      const levelDoc = doc(getFirestore(), `levels/level${level.level}`);
+      await setDoc(levelDoc, level);
+    });
+  };
+  postsLevelsDB();
   return (
     <Router>
       <Routes>

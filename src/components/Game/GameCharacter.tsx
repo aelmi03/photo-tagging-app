@@ -2,25 +2,43 @@ import { ICharacter } from "../../types";
 import styled, { css } from "styled-components";
 import Text from "../../utils/Text";
 import Character from "../../utils/Character";
+import React from "react";
 interface IProps {
   character: ICharacter;
   flow: string;
+  onClick?: (
+    e: React.MouseEvent<HTMLDivElement>,
+    character: ICharacter
+  ) => void;
 }
 
-const GameCharacter = ({ character, flow }: IProps) => {
+const GameCharacter = ({ character, flow, onClick }: IProps) => {
   return (
-    <GameCharacterWrapper flow={flow}>
+    <GameCharacterWrapper
+      flow={flow}
+      onClick={(e) => {
+        if (onClick) {
+          onClick(e, character);
+        }
+      }}
+      found={character.found}
+    >
       <StyledCharacter src={character.imgSrc} flow={flow} />
       <GameCharacterText flow={flow}>{character.name}</GameCharacterText>
     </GameCharacterWrapper>
   );
 };
 
-const GameCharacterWrapper = styled.div<{ flow: string }>`
+const GameCharacterWrapper = styled.div<{ flow: string; found: boolean }>`
   display: flex;
   flex-flow: ${({ flow }) => flow} nowrap;
   align-items: center;
   gap: 1rem;
+  ${({ found }) =>
+    found === true &&
+    css`
+      opacity: 0.5;
+    `}
   ${({ flow }) =>
     flow === "row" &&
     css`

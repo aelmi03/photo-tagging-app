@@ -3,6 +3,7 @@ export interface ICharacter {
   name: string;
   positionX: number[];
   positionY: number[];
+  found: boolean;
 }
 export interface ILevel {
   imgSrc: string;

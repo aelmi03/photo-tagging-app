@@ -1,14 +1,21 @@
 import { ICharacter, IPosition } from "../../types";
 import styled, { css } from "styled-components";
 import GameCharacter from "./GameCharacter";
+import React from "react";
 interface IProps {
   characters: ICharacter[];
   positions: IPosition;
+  onClick: (e: React.MouseEvent<HTMLDivElement>, character: ICharacter) => void;
 }
-const Characters = ({ characters, positions }: IProps) => {
+const Characters = ({ characters, positions, onClick }: IProps) => {
   const loadCharacters = () =>
     characters.map((character) => (
-      <GameCharacter key={character.name} flow="row" character={character} />
+      <GameCharacter
+        key={character.name}
+        flow="row"
+        character={character}
+        onClick={onClick}
+      />
     ));
   return (
     <CharactersWrapper positions={positions}>

@@ -11,6 +11,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/waldo.jpg?alt=media&token=9d50cb98-81a0-4dc6-938e-1b4ee74b534b",
         positionX: [80, 81, 82],
         positionY: [3, 4, 5, 6, 7, 8],
+        found: false,
       },
       {
         name: "Oswald",
@@ -18,6 +19,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/oswald.png?alt=media&token=972eb55e-4a94-4e75-a3bf-c50827646595",
         positionX: [3, 4, 5, 6],
         positionY: [76, 77, 78, 79, 80, 81, 82],
+        found: false,
       },
     ],
   },
@@ -32,6 +34,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/waldo.jpg?alt=media&token=9d50cb98-81a0-4dc6-938e-1b4ee74b534b",
         positionX: [46, 47, 48, 49, 50],
         positionY: [63, 64, 65, 66, 67, 68, 69, 70, 71, 72],
+        found: false,
       },
       {
         name: "Wenda",
@@ -39,6 +42,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/wenda.png?alt=media&token=088f5689-7254-43d6-acda-e227059d2d23",
         positionX: [80, 81, 82, 83],
         positionY: [70, 71, 72, 73, 74],
+        found: false,
       },
     ],
   },
@@ -53,6 +57,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/waldo.jpg?alt=media&token=9d50cb98-81a0-4dc6-938e-1b4ee74b534b",
         positionX: [71, 72],
         positionY: [40, 41, 42],
+        found: false,
       },
       {
         name: "Wenda",
@@ -60,6 +65,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/wenda.png?alt=media&token=088f5689-7254-43d6-acda-e227059d2d23",
         positionX: [59, 60],
         positionY: [67, 68, 69],
+        found: false,
       },
       {
         name: "Wizard",
@@ -67,6 +73,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/wizard.png?alt=media&token=3157064f-34cd-4850-b15f-86ce3ef3567b",
         positionX: [70, 71],
         positionY: [66, 67, 68, 69],
+        found: false,
       },
       {
         name: "Oswald",
@@ -74,6 +81,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/oswald.png?alt=media&token=972eb55e-4a94-4e75-a3bf-c50827646595",
         positionX: [55, 56, 57],
         positionY: [80, 81, 82],
+        found: false,
       },
     ],
   },
@@ -88,6 +96,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/waldo.jpg?alt=media&token=9d50cb98-81a0-4dc6-938e-1b4ee74b534b",
         positionX: [95, 96, 97],
         positionY: [0, 1, 2, 3],
+        found: false,
       },
       {
         name: "Wenda",
@@ -95,6 +104,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/wenda.png?alt=media&token=088f5689-7254-43d6-acda-e227059d2d23",
         positionX: [28, 29],
         positionY: [67, 68, 69, 70],
+        found: false,
       },
       {
         name: "Wizard",
@@ -102,6 +112,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/wizard.png?alt=media&token=3157064f-34cd-4850-b15f-86ce3ef3567b",
         positionX: [28, 29, 30, 31, 32],
         positionY: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46],
+        found: false,
       },
       {
         name: "Oswald",
@@ -109,6 +120,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/oswald.png?alt=media&token=972eb55e-4a94-4e75-a3bf-c50827646595",
         positionX: [91, 92, 93],
         positionY: [56, 57, 58, 59, 60, 61, 62, 63],
+        found: false,
       },
     ],
   },
@@ -123,6 +135,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/waldo.jpg?alt=media&token=9d50cb98-81a0-4dc6-938e-1b4ee74b534b",
         positionX: [25, 26, 27, 28],
         positionY: [31, 32, 33, 34, 35, 36, 37, 38],
+        found: false,
       },
       {
         name: "Wenda",
@@ -130,6 +143,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/wenda.png?alt=media&token=088f5689-7254-43d6-acda-e227059d2d23",
         positionX: [22, 23, 24],
         positionY: [85, 86, 87, 88, 89, 90],
+        found: false,
       },
       {
         name: "Oswald",
@@ -137,6 +151,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/oswald.png?alt=media&token=972eb55e-4a94-4e75-a3bf-c50827646595",
         positionX: [62, 63, 64],
         positionY: [74, 75, 76, 77, 78, 79, 80, 81],
+        found: false,
       },
     ],
   },
@@ -151,6 +166,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/waldo.jpg?alt=media&token=9d50cb98-81a0-4dc6-938e-1b4ee74b534b",
         positionX: [40, 41],
         positionY: [62, 63, 64, 65],
+        found: false,
       },
       {
         name: "Wenda",
@@ -158,6 +174,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/wenda.png?alt=media&token=088f5689-7254-43d6-acda-e227059d2d23",
         positionX: [29, 30],
         positionY: [52, 53, 54, 55],
+        found: false,
       },
       {
         name: "Wizard",
@@ -165,6 +182,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/wizard.png?alt=media&token=3157064f-34cd-4850-b15f-86ce3ef3567b",
         positionX: [78, 79],
         positionY: [56, 57, 58, 59],
+        found: false,
       },
       {
         name: "Oswald",
@@ -172,6 +190,7 @@ const gameLevels: ILevel[] = [
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/oswald.png?alt=media&token=972eb55e-4a94-4e75-a3bf-c50827646595",
         positionX: [7, 8],
         positionY: [70, 71, 72],
+        found: false,
       },
     ],
   },

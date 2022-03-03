@@ -39,7 +39,6 @@ const Main = () => {
       await setDoc(levelDoc, level);
     });
   };
-  postsLevelsDB();
   return (
     <Router>
       <Routes>

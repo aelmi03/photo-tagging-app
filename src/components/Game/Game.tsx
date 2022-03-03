@@ -1,23 +1,29 @@
 import React from "react";
 import styled from "styled-components";
-import { ILevel, IPosition } from "../../types";
+import { ILevel, IPosition, ICharacter } from "../../types";
 import GameCharacters from "./GameCharacters";
 import Characters from "./Characters";
 import { useState } from "react";
 interface IProps {
   currentLevel: ILevel | null;
 }
-
+interface ICoordinates {
+  x: number;
+  y: number;
+}
 const Game = ({ currentLevel }: IProps) => {
+  const [gameCharacters, setGameCharacters] = useState<ICharacter[] | null>(
+    currentLevel ? JSON.parse(JSON.stringify(currentLevel.characters)) : null
+  );
   const [positions, setPositions] = useState<IPosition>({
     top: "0",
     left: "0",
     visible: false,
   });
-  const testing = (e: any) => {
-    console.log(e.nativeEvent);
-    const width = e.target.offsetWidth;
-    const height = e.target.offsetHeight;
+  const changePositions = (e: React.MouseEvent<HTMLDivElement>): void => {
+    const target = e.target as HTMLDivElement;
+    const width = target.offsetWidth;
+    const height = target.offsetHeight;
     const xPosition = e.nativeEvent.offsetX;
     const yPosition = e.nativeEvent.offsetY;
     const x = ((xPosition / width) * 100).toFixed(0);
@@ -29,17 +35,65 @@ const Game = ({ currentLevel }: IProps) => {
     });
     console.log(`X : ${x}   Y : ${y}`);
   };
+  const getCoordinates = (
+    e: React.MouseEvent<HTMLDivElement>
+  ): ICoordinates => {
+    const target = e.target as HTMLDivElement;
+    const width = target.offsetWidth;
+    const height = target.offsetHeight;
+    const xPosition = e.nativeEvent.offsetX;
+    const yPosition = e.nativeEvent.offsetY;
+    const x = Number(((xPosition / width) * 100).toFixed(0));
+    const y = Number(((yPosition / height) * 100).toFixed(0));
+    return {
+      x,
+      y,
+    };
+  };
+  const resetPosition = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setPositions({
+      top: "0",
+      left: "0",
+      visible: false,
+    });
+  };
+  const characterClicked = (
+    e: React.MouseEvent<HTMLDivElement>,
+    character: ICharacter
+  ): void => {
+    resetPosition(e);
+    if (character.found === true) return;
+    const coordinates: ICoordinates = getCoordinates(e);
+    if (
+      character.positionX.includes(coordinates.x) &&
+      character.positionY.includes(coordinates.y) &&
+      gameCharacters
+    ) {
+      const changedCharacters = gameCharacters.map((gameCharacter) => {
+        if (gameCharacter === character) {
+          return {
+            ...gameCharacter,
+            found: true,
+          };
+        }
+        return {
+          ...gameCharacter,
+        };
+      });
+      setGameCharacters(changedCharacters);
+    }
+  };
   return (
     <GameWrapper>
-      <GameCharacters
-        characters={currentLevel ? currentLevel.characters : []}
-      />
-      <GameContent>
+      <GameCharacters characters={gameCharacters ? gameCharacters : []} />
+      <GameContent onClick={changePositions}>
         <Characters
-          characters={currentLevel ? currentLevel.characters : []}
+          characters={gameCharacters ? gameCharacters : []}
           positions={positions}
+          onClick={characterClicked}
         />
-        <GameImg src={currentLevel?.imgSrc} onClick={testing} />
+        <GameImg src={currentLevel?.imgSrc} />
       </GameContent>
     </GameWrapper>
   );

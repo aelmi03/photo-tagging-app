@@ -21,6 +21,11 @@ const Button = styled.button<ColorProps>`
       background-color: ${({ theme }) => theme.palette.primary.main};
     `}
     ${(props) =>
+    props.color === "black" &&
+    css`
+      background-color: ${({ theme }) => theme.palette.secondary.main};
+    `}
+    ${(props) =>
     props.border === "white" &&
     css`
       border: 2px solid ${({ theme }) => theme.palette.common.white};

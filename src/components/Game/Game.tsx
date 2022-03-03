@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ILevel } from "../../types";
 import GameCharacters from "./GameCharacters";
-
+import Characters from "./Characters";
 interface IProps {
   currentLevel: ILevel | null;
 }
@@ -22,6 +22,7 @@ const Game = ({ currentLevel }: IProps) => {
       <GameCharacters
         characters={currentLevel ? currentLevel.characters : []}
       />
+      <Characters characters={currentLevel ? currentLevel.characters : []} />
       <GameImg src={currentLevel?.imgSrc} onClick={testing} />
     </GameWrapper>
   );

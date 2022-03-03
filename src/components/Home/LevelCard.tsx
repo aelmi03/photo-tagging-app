@@ -24,7 +24,7 @@ const LevelCard = ({ gameLevel, changeCurrentLevel }: IProps) => {
         {loadCharacters()}
       </LevelInformation>
       <LevelButton
-        color="red"
+        color="black"
         onClick={() => {
           changeCurrentLevel(gameLevel);
           navigate("/game");

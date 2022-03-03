@@ -11,7 +11,7 @@ const GameCharacters = ({ characters }: IProps) => {
   const navigate = useNavigate();
   const loadGameCharacters = () => {
     return characters.map((character) => (
-      <GameCharacter character={character} key={character.name} />
+      <GameCharacter character={character} key={character.name} flow="column" />
     ));
   };
   return (
@@ -25,12 +25,15 @@ const GameCharacters = ({ characters }: IProps) => {
 };
 
 const GameCharactersWrapper = styled.section`
-  background-color: ${({ theme }) => theme.palette.primary.main};
   padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-items: flex-start;
   gap: 2rem;
+  background-color: ${({ theme }) => theme.palette.tertiary.main};
+  @media only screen and (min-width: 768px) {
+    padding: 1.2rem 4rem;
+  }
 `;
 const GameButton = styled(Button)`
   padding: 1rem 1.8rem;
@@ -38,6 +41,7 @@ const GameButton = styled(Button)`
   margin-left: auto;
   font-size: 1rem;
   transition: all 0.3s ease-in-out;
+
   &:hover {
     transform: scale(1.05);
   }

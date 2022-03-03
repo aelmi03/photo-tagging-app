@@ -3,11 +3,13 @@ import Text from "../../utils/Text";
 import Character from "../../utils/Character";
 import Button from "../../utils/Button";
 import { ILevel } from "../../types";
+import { useNavigate } from "react-router-dom";
 interface IProps {
   gameLevel: ILevel;
   changeCurrentLevel: (level: ILevel) => void;
 }
 const LevelCard = ({ gameLevel, changeCurrentLevel }: IProps) => {
+  const navigate = useNavigate();
   const { imgSrc, characters, level } = gameLevel;
   const loadCharacters = () => {
     return characters.map((character) => (
@@ -25,6 +27,7 @@ const LevelCard = ({ gameLevel, changeCurrentLevel }: IProps) => {
         color="red"
         onClick={() => {
           changeCurrentLevel(gameLevel);
+          navigate("/game");
         }}
       >
         Play

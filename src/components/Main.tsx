@@ -6,7 +6,6 @@ import { query, collection, getFirestore, getDocs } from "firebase/firestore";
 import { ILevel } from "../types";
 import { useEffect, useState } from "react";
 import Game from "./Game/";
-import { useNavigate } from "react-router-dom";
 const Main = () => {
   const [levels, setLevels] = useState<ILevel[] | null>(null);
   const [currentLevel, setCurrentLevel] = useState<ILevel | null>(null);

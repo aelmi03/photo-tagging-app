@@ -66,10 +66,11 @@ const Game = ({ currentLevel }: IProps) => {
     if (character.found === true) return;
     const coordinates: ICoordinates = getCoordinates(e);
     if (
-      character.positionX.includes(coordinates.x) &&
-      character.positionY.includes(coordinates.y) &&
+      character.positionX.includes(Number(positions.left)) &&
+      character.positionY.includes(Number(positions.top)) &&
       gameCharacters
     ) {
+      console.log("RIGHT POSITIONS");
       const changedCharacters = gameCharacters.map((gameCharacter) => {
         if (gameCharacter === character) {
           return {

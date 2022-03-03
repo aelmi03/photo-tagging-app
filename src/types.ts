@@ -9,3 +9,8 @@ export interface ILevel {
   level: string;
   characters: ICharacter[];
 }
+
+export interface IPosition {
+  top: string;
+  left: string;
+}

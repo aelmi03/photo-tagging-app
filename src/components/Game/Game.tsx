@@ -1,12 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { ILevel } from "../../types";
+import { ILevel, IPosition } from "../../types";
 import GameCharacters from "./GameCharacters";
 import Characters from "./Characters";
+import { useState } from "react";
 interface IProps {
   currentLevel: ILevel | null;
 }
+
 const Game = ({ currentLevel }: IProps) => {
+  const [positions, setPositions] = useState<IPosition>({
+    top: "0",
+    left: "0",
+  });
   const testing = (e: any) => {
     console.log(e.nativeEvent);
     const width = e.target.offsetWidth;
@@ -15,6 +21,10 @@ const Game = ({ currentLevel }: IProps) => {
     const yPosition = e.nativeEvent.offsetY;
     const x = ((xPosition / width) * 100).toFixed(0);
     const y = ((yPosition / height) * 100).toFixed(0);
+    setPositions({
+      top: y,
+      left: x,
+    });
     console.log(`X : ${x}   Y : ${y}`);
   };
   return (
@@ -22,8 +32,13 @@ const Game = ({ currentLevel }: IProps) => {
       <GameCharacters
         characters={currentLevel ? currentLevel.characters : []}
       />
-      <Characters characters={currentLevel ? currentLevel.characters : []} />
-      <GameImg src={currentLevel?.imgSrc} onClick={testing} />
+      <GameContent>
+        <Characters
+          characters={currentLevel ? currentLevel.characters : []}
+          positions={positions}
+        />
+        <GameImg src={currentLevel?.imgSrc} onClick={testing} />
+      </GameContent>
     </GameWrapper>
   );
 };
@@ -32,5 +47,8 @@ const GameWrapper = styled.div`
 `;
 const GameImg = styled.img`
   width: 100%;
+`;
+const GameContent = styled.div`
+  position: relative;
 `;
 export default Game;

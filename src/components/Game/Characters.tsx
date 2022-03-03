@@ -1,5 +1,5 @@
 import { ICharacter, IPosition } from "../../types";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import GameCharacter from "./GameCharacter";
 interface IProps {
   characters: ICharacter[];
@@ -18,7 +18,12 @@ const Characters = ({ characters, positions }: IProps) => {
 };
 const CharactersWrapper = styled.div<{ positions: IPosition }>`
   position: absolute;
-  display: grid;
+  display: none;
+  ${({ positions }) =>
+    positions.visible &&
+    css`
+      display: grid;
+    `}
   top: ${({ positions }) => positions.top}%;
   left: ${({ positions }) => positions.left}%;
   height: max-content;

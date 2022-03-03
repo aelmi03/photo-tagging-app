@@ -12,6 +12,7 @@ const Game = ({ currentLevel }: IProps) => {
   const [positions, setPositions] = useState<IPosition>({
     top: "0",
     left: "0",
+    visible: false,
   });
   const testing = (e: any) => {
     console.log(e.nativeEvent);
@@ -24,6 +25,7 @@ const Game = ({ currentLevel }: IProps) => {
     setPositions({
       top: y,
       left: x,
+      visible: true,
     });
     console.log(`X : ${x}   Y : ${y}`);
   };

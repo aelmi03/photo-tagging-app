@@ -13,4 +13,5 @@ export interface ILevel {
 export interface IPosition {
   top: string;
   left: string;
+  visible: boolean;
 }

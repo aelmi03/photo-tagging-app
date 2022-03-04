@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import Button from "../../utils/Button";
 import Text from "../../utils/Text";
+import React, { useState } from "react";
 
 interface IProps {
   gameOver: boolean;
@@ -38,6 +39,7 @@ const GameModalWrapper = styled.div<{ gameOver: boolean }>`
   z-index: 10;
   width: min(95%, 600px);
   border-radius: 7px;
+  box-shadow: 0px 0px 5px ${({ theme }) => theme.palette.secondary.main};
   background-color: ${({ theme }) => theme.palette.common.white};
   > :nth-child(2) {
     border-bottom: 2px dotted ${({ theme }) => theme.palette.common.grey};

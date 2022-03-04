@@ -5,6 +5,13 @@ import GameCharacters from "./GameCharacters";
 import Characters from "./Characters";
 import { useState, useEffect } from "react";
 import GameModal from "./GameModal";
+import {
+  getFirestore,
+  collection,
+  serverTimestamp,
+  addDoc,
+  updateDoc,
+} from "firebase/firestore";
 interface IProps {
   currentLevel: ILevel | null;
 }
@@ -21,6 +28,7 @@ const Game = ({ currentLevel }: IProps) => {
     left: "0",
     visible: false,
   });
+  const [docReference, setDocReference] = useState<any>();
   const [gameOver, setGameOver] = useState<boolean>(false);
   const changePositions = (e: React.MouseEvent<HTMLDivElement>): void => {
     const { x, y } = getCoordinates(e);
@@ -51,6 +59,23 @@ const Game = ({ currentLevel }: IProps) => {
       setGameOver(true);
     }
   }, [gameCharacters]);
+  useEffect(() => {
+    if (gameOver === true) {
+      updateDoc(docReference, {
+        endedAt: serverTimestamp(),
+      });
+    }
+    if (gameOver === false) {
+      addDoc(collection(getFirestore(), "sessions"), {
+        startedAt: serverTimestamp(),
+        level: currentLevel?.level,
+      }).then((reference) => {
+        setDocReference(reference);
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gameOver, currentLevel?.level]);
+
   const resetPosition = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     setPositions({
@@ -109,6 +134,7 @@ const GameWrapper = styled.div<{ gameOver: boolean }>`
     css`
       background-color: rgba(0, 0, 0, 0.5);
     `}
+  min-height:100vh;
 `;
 const GameImg = styled.img<{ gameOver: boolean }>`
   width: 100%;

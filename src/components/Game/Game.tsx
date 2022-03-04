@@ -5,7 +5,7 @@ import GameCharacters from "./GameCharacters";
 import Characters from "./Characters";
 import { useState, useEffect } from "react";
 import GameModal from "./GameModal";
-import { differenceInSeconds } from "date-fns";
+import { differenceInMilliseconds } from "date-fns";
 import {
   getFirestore,
   collection,
@@ -65,7 +65,14 @@ const Game = ({ currentLevel }: IProps) => {
     const determineSeconds = async () => {
       const gameDoc = await getDoc(docReference);
       const gameData = gameDoc.data() as any;
-      console.log(gameData.endedAt.toDate());
+      const seconds =
+        differenceInMilliseconds(
+          gameData.endedAt.toDate(),
+          gameData.startedAt.toDate()
+        ) / 1000;
+      updateDoc(docReference, {
+        seconds,
+      });
     };
     if (gameOver === true) {
       updateDoc(docReference, {

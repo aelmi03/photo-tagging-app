@@ -26,6 +26,9 @@ const GameCharacters = ({ characters }: IProps) => {
 
 const GameCharactersWrapper = styled.section`
   padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0px;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-items: flex-start;

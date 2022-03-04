@@ -4,6 +4,7 @@ import { ILevel, IPosition, ICharacter } from "../../types";
 import GameCharacters from "./GameCharacters";
 import Characters from "./Characters";
 import { useState } from "react";
+import GameModal from "./GameModal";
 interface IProps {
   currentLevel: ILevel | null;
 }
@@ -58,19 +59,12 @@ const Game = ({ currentLevel }: IProps) => {
       visible: false,
     });
   };
-  const characterClicked = (
-    e: React.MouseEvent<HTMLDivElement>,
-    character: ICharacter
-  ): void => {
-    resetPosition(e);
-    if (character.found === true) return;
-    const coordinates: ICoordinates = getCoordinates(e);
+  const foundCharacter = (character: ICharacter) => {
     if (
       character.positionX.includes(Number(positions.left)) &&
       character.positionY.includes(Number(positions.top)) &&
       gameCharacters
     ) {
-      console.log("RIGHT POSITIONS");
       const changedCharacters = gameCharacters.map((gameCharacter) => {
         if (gameCharacter === character) {
           return {
@@ -85,6 +79,15 @@ const Game = ({ currentLevel }: IProps) => {
       setGameCharacters(changedCharacters);
     }
   };
+
+  const characterClicked = (
+    e: React.MouseEvent<HTMLDivElement>,
+    character: ICharacter
+  ): void => {
+    resetPosition(e);
+    if (character.found === true) return;
+    foundCharacter(character);
+  };
   return (
     <GameWrapper>
       <GameCharacters characters={gameCharacters ? gameCharacters : []} />
@@ -94,6 +97,7 @@ const Game = ({ currentLevel }: IProps) => {
           positions={positions}
           onClick={characterClicked}
         />
+        <GameModal />
         <GameImg src={currentLevel?.imgSrc} />
       </GameContent>
     </GameWrapper>

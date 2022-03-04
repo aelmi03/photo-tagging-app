@@ -6,12 +6,13 @@ import React, { useState } from "react";
 interface IProps {
   gameOver: boolean;
   deleteSession: () => void;
+  seconds: string;
 }
-const GameModal = ({ gameOver, deleteSession }: IProps) => {
+const GameModal = ({ gameOver, deleteSession, seconds }: IProps) => {
   return (
     <GameModalWrapper gameOver={gameOver}>
       <ModalContainer flow="column" gap="1rem">
-        <ModalTitle>You finished in 3 seconds</ModalTitle>
+        <ModalTitle>You finished in {seconds} seconds</ModalTitle>
         <Text color="grey">
           Enter your name to see where you rank in the leaderboards!
         </Text>

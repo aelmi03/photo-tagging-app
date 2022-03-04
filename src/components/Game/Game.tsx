@@ -38,6 +38,7 @@ const Game = ({ currentLevel }: IProps) => {
   const [docReference, setDocReference] = useState<DocumentReference>(
     doc(getFirestore(), "placeholder/placeholder")
   );
+  const [seconds, setSeconds] = useState<string>("...");
   const [gameOver, setGameOver] = useState<boolean>(false);
   const changePositions = (e: React.MouseEvent<HTMLDivElement>): void => {
     const { x, y } = getCoordinates(e);
@@ -81,6 +82,7 @@ const Game = ({ currentLevel }: IProps) => {
           gameData.endedAt.toDate(),
           gameData.startedAt.toDate()
         ) / 1000;
+      setSeconds(String(seconds));
       updateDoc(docReference, {
         seconds,
       });
@@ -154,7 +156,11 @@ const Game = ({ currentLevel }: IProps) => {
         />
         <GameImg src={currentLevel?.imgSrc} gameOver={gameOver} />
       </GameContent>
-      <GameModal gameOver={gameOver} deleteSession={deleteSession} />
+      <GameModal
+        gameOver={gameOver}
+        deleteSession={deleteSession}
+        seconds={seconds}
+      />
     </GameWrapper>
   );
 };

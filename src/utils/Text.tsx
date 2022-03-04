@@ -7,6 +7,9 @@ const Text = styled.p<{ color?: string }>`
     color === "grey" &&
     css`
       color: ${({ theme }) => theme.palette.secondary.main};
+      @media only screen and (min-width: 768px) {
+        font-size: 2rem;
+      }
     `};
 `;
 

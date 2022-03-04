@@ -44,6 +44,7 @@ const GameModal = ({
           onClick={() => {
             addUsername(username);
           }}
+          disabled={!username}
         >
           Submit
         </ModalButton>
@@ -62,7 +63,7 @@ const GameModalWrapper = styled.div<{ gameOver: boolean }>`
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
   z-index: 10;
-  width: min(95%, 600px);
+  width: min(95%, 650px);
   border-radius: 7px;
   box-shadow: 0px 0px 5px ${({ theme }) => theme.palette.secondary.main};
   background-color: ${({ theme }) => theme.palette.common.white};
@@ -83,10 +84,16 @@ const ModalTitle = styled(Text)`
   font-size: 2.5rem;
   font-weight: bold;
   font-family: "Poppins", sans-serif;
+  @media only screen and (min-width: 768px) {
+    font-size: 2.8rem;
+  }
 `;
 const ModalLabel = styled.label`
   font-size: 1.6rem;
   font-family: "Poppins", sans-serif;
+  @media only screen and (min-width: 768px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const ModalInput = styled.input`
@@ -95,10 +102,24 @@ const ModalInput = styled.input`
   font-size: 1.6rem;
   padding: 1.2rem 1.5rem;
   width: 90%;
+  @media only screen and (min-width: 768px) {
+    padding: 1.4rem 1.7rem;
+    font-size: 1.7rem;
+  }
 `;
-const ModalButton = styled(Button)`
+const ModalButton = styled(Button)<{ disabled?: boolean }>`
   padding: 0.9rem 3.5rem;
   font-size: 1.6rem;
+  ${({ disabled }) =>
+    disabled === true &&
+    css`
+      opacity: 0.5;
+      pointer-events: none;
+    `}
+  @media only screen and (min-width: 768px) {
+    padding: 1.1rem 5.3rem;
+    font-size: 1.9rem;
+  }
 `;
 const ModalContainer = styled.div<{ flow: string; gap: string }>`
   display: flex;

@@ -39,5 +39,8 @@ const CharactersWrapper = styled.div<{ positions: IPosition }>`
   justify-items: center;
   background-color: ${({ theme }) => theme.palette.common.white};
   border-radius: 5px;
+  @media only screen and (min-width: 768px) {
+    width: 170px;
+  }
 `;
 export default Characters;

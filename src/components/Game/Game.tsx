@@ -69,6 +69,7 @@ const Game = ({ currentLevel }: IProps) => {
     navigate("/");
   };
   const addUsername = (name: string) => {
+    if (!name) return;
     updateDoc(docReference, {
       username: name,
     });
@@ -104,6 +105,7 @@ const Game = ({ currentLevel }: IProps) => {
       addDoc(collection(getFirestore(), "sessions"), {
         startedAt: serverTimestamp(),
         level: currentLevel?.level,
+        username: null,
       }).then((reference) => {
         setDocReference(reference);
       });

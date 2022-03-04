@@ -48,6 +48,9 @@ const GameCharacterWrapper = styled.div<{ flow: string; found: boolean }>`
       &:hover {
         background-color: ${({ theme }) => theme.palette.common.grey};
       }
+      @media only screen and (min-width: 768px) {
+        padding: 1rem 1.6rem;
+      }
     `}
 `;
 
@@ -65,7 +68,7 @@ const GameCharacterText = styled(Text)<{ flow: string }>`
     ${({ flow }) =>
       flow === "row" &&
       css`
-        font-size: 1rem;
+        font-size: 1.3rem;
       `}
   }
 `;
@@ -83,6 +86,10 @@ const StyledCharacter = styled(Character)<{ flow: string }>`
       css`
         width: 40px;
         height: 40px;
+        @media only screen and (min-width: 768px) {
+          width: 50px;
+          height: 50px;
+        }
       `}
   }
 `;

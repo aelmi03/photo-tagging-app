@@ -22,4 +22,5 @@ export interface IData {
   startedAt: string;
   endedAt: string;
   seconds: string;
+  username: string;
 }

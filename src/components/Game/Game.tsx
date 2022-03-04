@@ -152,10 +152,12 @@ const Game = ({ currentLevel }: IProps) => {
   };
   return (
     <GameWrapper gameOver={gameOver}>
+      <FoundStatus>Waldo is not there</FoundStatus>
+
       <GameCharacters
         characters={gameCharacters ? gameCharacters : []}
         deleteSession={deleteSession}
-      />
+      ></GameCharacters>
       <GameContent onClick={changePositions} gameOver={gameOver}>
         <Characters
           characters={gameCharacters ? gameCharacters : []}
@@ -198,5 +200,27 @@ const GameContent = styled.div<{ gameOver: boolean }>`
       z-index: -1;
     `}
 `;
-
+const FoundStatus = styled.div`
+  background-color: ${({ theme }) => theme.palette.primary.main};
+  color: ${({ theme }) => theme.palette.primary.contrastText};
+  padding: 0.8rem 1.3rem;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  border-radius: 5px;
+  z-index: 10;
+  position: fixed;
+  width: max-content;
+  top: 85px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  @media only screen and (min-width: 540px) {
+    top: 130px;
+    font-size: 1.2rem;
+  }
+  @media only screen and (min-width: 768px) {
+    font-size: 1.55rem;
+  }
+  /* bring your own prefixes */
+`;
 export default Game;

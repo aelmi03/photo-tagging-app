@@ -9,14 +9,16 @@ interface IProps {
 }
 const Characters = ({ characters, positions, onClick }: IProps) => {
   const loadCharacters = () =>
-    characters.map((character) => (
-      <GameCharacter
-        key={character.name}
-        flow="row"
-        character={character}
-        onClick={onClick}
-      />
-    ));
+    characters
+      .filter((character) => !character.found)
+      .map((character) => (
+        <GameCharacter
+          key={character.name}
+          flow="row"
+          character={character}
+          onClick={onClick}
+        />
+      ));
   return (
     <CharactersWrapper positions={positions}>
       {loadCharacters()}
@@ -39,6 +41,7 @@ const CharactersWrapper = styled.div<{ positions: IPosition }>`
   justify-items: center;
   background-color: ${({ theme }) => theme.palette.common.white};
   border-radius: 5px;
+  box-shadow: 0px 0px 3px ${({ theme }) => theme.palette.secondary.main};
   @media only screen and (min-width: 768px) {
     width: 170px;
   }

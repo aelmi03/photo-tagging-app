@@ -33,6 +33,7 @@ const GameModal = ({
             const inputElement = e.target as HTMLInputElement;
             setUsername(inputElement.value);
           }}
+          maxLength={18}
         ></ModalInput>
       </ModalContainer>
       <ModalContainer flow="row" gap="1.5rem">
@@ -101,7 +102,7 @@ const ModalInput = styled.input`
   box-shadow: 0.5px 0.5px 3px ${({ theme }) => theme.palette.secondary.main};
   font-size: 1.6rem;
   padding: 1.2rem 1.5rem;
-  width: 90%;
+  width: 78%;
   @media only screen and (min-width: 768px) {
     padding: 1.4rem 1.7rem;
     font-size: 1.7rem;

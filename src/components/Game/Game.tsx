@@ -68,6 +68,12 @@ const Game = ({ currentLevel }: IProps) => {
     deleteDoc(docReference);
     navigate("/");
   };
+  const addUsername = (name: string) => {
+    updateDoc(docReference, {
+      username: name,
+    });
+    navigate("/");
+  };
   useEffect(() => {
     if (gameCharacters?.every((character) => character.found)) {
       setGameOver(true);
@@ -160,6 +166,7 @@ const Game = ({ currentLevel }: IProps) => {
         gameOver={gameOver}
         deleteSession={deleteSession}
         seconds={seconds}
+        addUsername={addUsername}
       />
     </GameWrapper>
   );

@@ -7,8 +7,15 @@ interface IProps {
   gameOver: boolean;
   deleteSession: () => void;
   seconds: string;
+  addUsername: (name: string) => void;
 }
-const GameModal = ({ gameOver, deleteSession, seconds }: IProps) => {
+const GameModal = ({
+  gameOver,
+  deleteSession,
+  seconds,
+  addUsername,
+}: IProps) => {
+  const [username, setUsername] = useState<string>("");
   return (
     <GameModalWrapper gameOver={gameOver}>
       <ModalContainer flow="column" gap="1rem">
@@ -19,13 +26,27 @@ const GameModal = ({ gameOver, deleteSession, seconds }: IProps) => {
       </ModalContainer>
       <ModalContainer flow="row" gap="1rem">
         <ModalLabel>Username:</ModalLabel>
-        <ModalInput placeholder="John Doe"></ModalInput>
+        <ModalInput
+          placeholder="John Doe"
+          value={username}
+          onChange={(e: React.FormEvent<HTMLInputElement>) => {
+            const inputElement = e.target as HTMLInputElement;
+            setUsername(inputElement.value);
+          }}
+        ></ModalInput>
       </ModalContainer>
       <ModalContainer flow="row" gap="1.5rem">
         <ModalButton color="red" onClick={deleteSession}>
           Cancel
         </ModalButton>
-        <ModalButton color="blue">Submit</ModalButton>
+        <ModalButton
+          color="blue"
+          onClick={() => {
+            addUsername(username);
+          }}
+        >
+          Submit
+        </ModalButton>
       </ModalContainer>
     </GameModalWrapper>
   );

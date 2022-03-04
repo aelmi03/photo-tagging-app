@@ -10,6 +10,10 @@ const Button = styled.button<ColorProps>`
   padding: 0.8rem 5.5rem;
   font-size: 1.8rem;
   border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
   ${(props) =>
     props.color === "red" &&
     css`

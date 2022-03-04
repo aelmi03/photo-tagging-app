@@ -2,9 +2,12 @@ import styled, { css } from "styled-components";
 import Button from "../../utils/Button";
 import Text from "../../utils/Text";
 
-const GameModal = () => {
+interface IProps {
+  gameOver: boolean;
+}
+const GameModal = ({ gameOver }: IProps) => {
   return (
-    <GameModalWrapper>
+    <GameModalWrapper gameOver={gameOver}>
       <ModalContainer flow="column" gap="1rem">
         <ModalTitle>You finished in 3 seconds</ModalTitle>
         <Text color="grey">
@@ -22,8 +25,8 @@ const GameModal = () => {
     </GameModalWrapper>
   );
 };
-const GameModalWrapper = styled.div`
-  display: grid;
+const GameModalWrapper = styled.div<{ gameOver: boolean }>`
+  display: none;
   position: absolute;
   grid-template-rows: 1fr 3fr 1fr;
   height: 430px;
@@ -43,6 +46,11 @@ const GameModalWrapper = styled.div`
   > :nth-child(3) {
     justify-self: center;
   }
+  ${({ gameOver }) =>
+    gameOver === true &&
+    css`
+      display: grid;
+    `}
 `;
 const ModalTitle = styled(Text)`
   font-size: 2.5rem;

@@ -1,9 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ILevel, IPosition, ICharacter } from "../../types";
 import GameCharacters from "./GameCharacters";
 import Characters from "./Characters";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GameModal from "./GameModal";
 interface IProps {
   currentLevel: ILevel | null;
@@ -21,17 +21,12 @@ const Game = ({ currentLevel }: IProps) => {
     left: "0",
     visible: false,
   });
+  const [gameOver, setGameOver] = useState<boolean>(false);
   const changePositions = (e: React.MouseEvent<HTMLDivElement>): void => {
-    const target = e.target as HTMLDivElement;
-    const width = target.offsetWidth;
-    const height = target.offsetHeight;
-    const xPosition = e.nativeEvent.offsetX;
-    const yPosition = e.nativeEvent.offsetY;
-    const x = ((xPosition / width) * 100).toFixed(0);
-    const y = ((yPosition / height) * 100).toFixed(0);
+    const { x, y } = getCoordinates(e);
     setPositions({
-      top: y,
-      left: x,
+      top: String(y),
+      left: String(x),
       visible: true,
     });
     console.log(`X : ${x}   Y : ${y}`);
@@ -51,6 +46,11 @@ const Game = ({ currentLevel }: IProps) => {
       y,
     };
   };
+  useEffect(() => {
+    if (gameCharacters?.every((character) => character.found)) {
+      setGameOver(true);
+    }
+  }, [gameCharacters]);
   const resetPosition = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     setPositions({
@@ -89,29 +89,43 @@ const Game = ({ currentLevel }: IProps) => {
     foundCharacter(character);
   };
   return (
-    <GameWrapper>
+    <GameWrapper gameOver={gameOver}>
       <GameCharacters characters={gameCharacters ? gameCharacters : []} />
-      <GameContent onClick={changePositions}>
+      <GameContent onClick={changePositions} gameOver={gameOver}>
         <Characters
           characters={gameCharacters ? gameCharacters : []}
           positions={positions}
           onClick={characterClicked}
         />
-        <GameImg src={currentLevel?.imgSrc} />
+        <GameImg src={currentLevel?.imgSrc} gameOver={gameOver} />
       </GameContent>
-      <GameModal />
+      <GameModal gameOver={gameOver} />
     </GameWrapper>
   );
 };
-const GameWrapper = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
+const GameWrapper = styled.div<{ gameOver: boolean }>`
+  ${({ gameOver }) =>
+    gameOver === true &&
+    css`
+      background-color: rgba(0, 0, 0, 0.5);
+    `}
 `;
-const GameImg = styled.img`
+const GameImg = styled.img<{ gameOver: boolean }>`
   width: 100%;
-  pointer-events: none;
+  ${({ gameOver }) =>
+    gameOver === true &&
+    css`
+      pointer-events: none;
+    `}
 `;
-const GameContent = styled.div`
+const GameContent = styled.div<{ gameOver: boolean }>`
   position: relative;
-  z-index: -1;
+  ${({ gameOver }) =>
+    gameOver === true &&
+    css`
+      pointer-events: none;
+      z-index: -1;
+    `}
 `;
+
 export default Game;

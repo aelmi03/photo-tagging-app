@@ -14,6 +14,14 @@ const gameLevels: ILevel[] = [
         found: false,
       },
       {
+        name: "Wenda",
+        imgSrc:
+          "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/wenda.png?alt=media&token=088f5689-7254-43d6-acda-e227059d2d23",
+        positionX: [88, 89, 90],
+        positionY: [25, 26, 27, 28, 29, 30, 31, 32],
+        found: false,
+      },
+      {
         name: "Oswald",
         imgSrc:
           "https://firebasestorage.googleapis.com/v0/b/photo-tagging-app-e4d53.appspot.com/o/oswald.png?alt=media&token=972eb55e-4a94-4e75-a3bf-c50827646595",

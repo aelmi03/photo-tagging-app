@@ -7,7 +7,9 @@ const GameModal = () => {
     <GameModalWrapper>
       <ModalContainer flow="column" gap="1rem">
         <ModalTitle>You finished in 3 seconds</ModalTitle>
-        <Text>Enter your name to see where you rank in the leaderboards!</Text>
+        <Text color="grey">
+          Enter your name to see where you rank in the leaderboards!
+        </Text>
       </ModalContainer>
       <ModalContainer flow="row" gap="1rem">
         <ModalLabel>Username:</ModalLabel>
@@ -21,18 +23,21 @@ const GameModal = () => {
   );
 };
 const GameModalWrapper = styled.div`
-  border: 1px solid ${({ theme }) => theme.palette.common.black};
   display: grid;
   position: absolute;
   grid-template-rows: 1fr 3fr 1fr;
-  top: 0px;
-  height: 350px;
+  height: 430px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
   z-index: 3;
   width: min(95%, 600px);
   border-radius: 7px;
   background-color: ${({ theme }) => theme.palette.common.white};
   > :nth-child(2) {
-    border: 2px solid ${({ theme }) => theme.palette.common.grey};
+    border: 1px dotted ${({ theme }) => theme.palette.common.grey};
   }
   > :nth-child(3) {
     justify-self: center;
@@ -50,7 +55,7 @@ const ModalLabel = styled.label`
 
 const ModalInput = styled.input`
   border-radius: 5px;
-  box-shadow: 0px 2px 10px ${({ theme }) => theme.palette.common.grey};
+  box-shadow: 0px 0px 5px ${({ theme }) => theme.palette.common.grey};
   font-size: 1.6rem;
   padding: 1.2rem 1.5rem;
   width: 90%;
@@ -63,7 +68,7 @@ const ModalContainer = styled.div<{ flow: string; gap: string }>`
   display: flex;
   flex-flow: ${({ flow }) => flow} nowrap;
   gap: ${({ gap }) => gap};
-  padding: 1.5rem;
+  padding: 3rem 1.5rem;
   justify-content: center;
   align-items: center;
   ${({ flow }) =>

@@ -56,7 +56,7 @@ const GameCharacterWrapper = styled.div<{ flow: string; found: boolean }>`
 
 const GameCharacterText = styled(Text)<{ flow: string }>`
   color: ${({ theme }) => theme.palette.common.white};
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   ${({ flow }) =>
     flow === "row" &&
     css`
@@ -74,8 +74,8 @@ const GameCharacterText = styled(Text)<{ flow: string }>`
 `;
 
 const StyledCharacter = styled(Character)<{ flow: string }>`
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   @media only screen and (min-width: 540px) {
     width: 65px;
     height: 65px;
@@ -87,8 +87,8 @@ const StyledCharacter = styled(Character)<{ flow: string }>`
         width: 40px;
         height: 40px;
         @media only screen and (min-width: 768px) {
-          width: 50px;
-          height: 50px;
+          width: 45px;
+          height: 45px;
         }
       `}
   }

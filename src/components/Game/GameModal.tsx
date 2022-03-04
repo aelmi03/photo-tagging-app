@@ -19,7 +19,7 @@ const GameModal = ({
   return (
     <GameModalWrapper gameOver={gameOver}>
       <ModalContainer flow="column" gap="1rem">
-        <ModalTitle>You finished in {seconds} seconds</ModalTitle>
+        <ModalTitle>You finished in {seconds} seconds!</ModalTitle>
         <Text color="grey">
           Enter your name to see where you rank in the leaderboards!
         </Text>

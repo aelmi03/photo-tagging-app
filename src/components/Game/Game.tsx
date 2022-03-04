@@ -38,6 +38,7 @@ const Game = ({ currentLevel }: IProps) => {
   const [docReference, setDocReference] = useState<DocumentReference>(
     doc(getFirestore(), "placeholder/placeholder")
   );
+  const [foundStatusText, setFoundStatusText] = useState<string>("");
   const [seconds, setSeconds] = useState<string>("...");
   const [gameOver, setGameOver] = useState<boolean>(false);
   const changePositions = (e: React.MouseEvent<HTMLDivElement>): void => {
@@ -47,6 +48,7 @@ const Game = ({ currentLevel }: IProps) => {
       left: String(x),
       visible: true,
     });
+    setFoundStatusText("");
     console.log(`X : ${x}   Y : ${y}`);
   };
   const getCoordinates = (
@@ -138,7 +140,10 @@ const Game = ({ currentLevel }: IProps) => {
           ...gameCharacter,
         };
       });
+      setFoundStatusText(`Nice job you have found ${character.name}! `);
       setGameCharacters(changedCharacters);
+    } else {
+      setFoundStatusText(`${character.name} is not there. Keep looking!`);
     }
   };
 
@@ -152,7 +157,7 @@ const Game = ({ currentLevel }: IProps) => {
   };
   return (
     <GameWrapper gameOver={gameOver}>
-      <FoundStatus>Waldo is not there</FoundStatus>
+      <FoundStatus>{foundStatusText}</FoundStatus>
 
       <GameCharacters
         characters={gameCharacters ? gameCharacters : []}

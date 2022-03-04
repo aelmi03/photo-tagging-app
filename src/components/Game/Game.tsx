@@ -1,16 +1,18 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { ILevel, IPosition, ICharacter } from "../../types";
+import { ILevel, IPosition, ICharacter, IData } from "../../types";
 import GameCharacters from "./GameCharacters";
 import Characters from "./Characters";
 import { useState, useEffect } from "react";
 import GameModal from "./GameModal";
+import { differenceInSeconds } from "date-fns";
 import {
   getFirestore,
   collection,
   serverTimestamp,
   addDoc,
   updateDoc,
+  getDoc,
 } from "firebase/firestore";
 interface IProps {
   currentLevel: ILevel | null;
@@ -60,9 +62,16 @@ const Game = ({ currentLevel }: IProps) => {
     }
   }, [gameCharacters]);
   useEffect(() => {
+    const determineSeconds = async () => {
+      const gameDoc = await getDoc(docReference);
+      const gameData = gameDoc.data() as any;
+      console.log(gameData.endedAt.toDate());
+    };
     if (gameOver === true) {
       updateDoc(docReference, {
         endedAt: serverTimestamp(),
+      }).then((ref) => {
+        determineSeconds();
       });
     }
     if (gameOver === false) {

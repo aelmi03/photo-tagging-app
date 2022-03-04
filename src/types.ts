@@ -16,3 +16,10 @@ export interface IPosition {
   left: string;
   visible: boolean;
 }
+
+export interface IData {
+  level: string;
+  startedAt: string;
+  endedAt: string;
+  seconds: string;
+}

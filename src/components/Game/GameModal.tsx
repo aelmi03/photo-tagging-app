@@ -32,12 +32,13 @@ const GameModalWrapper = styled.div`
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
-  z-index: 3;
+  z-index: 10;
   width: min(95%, 600px);
   border-radius: 7px;
   background-color: ${({ theme }) => theme.palette.common.white};
   > :nth-child(2) {
-    border: 1px dotted ${({ theme }) => theme.palette.common.grey};
+    border-bottom: 2px dotted ${({ theme }) => theme.palette.common.grey};
+    border-top: 2px dotted ${({ theme }) => theme.palette.common.grey};
   }
   > :nth-child(3) {
     justify-self: center;
@@ -55,7 +56,7 @@ const ModalLabel = styled.label`
 
 const ModalInput = styled.input`
   border-radius: 5px;
-  box-shadow: 0px 0px 5px ${({ theme }) => theme.palette.common.grey};
+  box-shadow: 0.5px 0.5px 3px ${({ theme }) => theme.palette.secondary.main};
   font-size: 1.6rem;
   padding: 1.2rem 1.5rem;
   width: 90%;

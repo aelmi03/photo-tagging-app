@@ -6,7 +6,7 @@ const Text = styled.p<{ color?: string }>`
   ${({ color }) =>
     color === "grey" &&
     css`
-      color: ${({ theme }) => theme.palette.common.grey};
+      color: ${({ theme }) => theme.palette.secondary.main};
     `};
 `;
 

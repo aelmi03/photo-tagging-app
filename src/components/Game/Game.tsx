@@ -97,19 +97,21 @@ const Game = ({ currentLevel }: IProps) => {
           positions={positions}
           onClick={characterClicked}
         />
-        <GameModal />
         <GameImg src={currentLevel?.imgSrc} />
       </GameContent>
+      <GameModal />
     </GameWrapper>
   );
 };
 const GameWrapper = styled.div`
-  background-color: ${({ theme }) => theme.palette.common.white};
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 const GameImg = styled.img`
   width: 100%;
+  pointer-events: none;
 `;
 const GameContent = styled.div`
   position: relative;
+  z-index: -1;
 `;
 export default Game;

@@ -5,8 +5,9 @@ import React, { useState } from "react";
 
 interface IProps {
   gameOver: boolean;
+  deleteSession: () => void;
 }
-const GameModal = ({ gameOver }: IProps) => {
+const GameModal = ({ gameOver, deleteSession }: IProps) => {
   return (
     <GameModalWrapper gameOver={gameOver}>
       <ModalContainer flow="column" gap="1rem">
@@ -20,7 +21,9 @@ const GameModal = ({ gameOver }: IProps) => {
         <ModalInput placeholder="John Doe"></ModalInput>
       </ModalContainer>
       <ModalContainer flow="row" gap="1.5rem">
-        <ModalButton color="red">Cancel</ModalButton>
+        <ModalButton color="red" onClick={deleteSession}>
+          Cancel
+        </ModalButton>
         <ModalButton color="blue">Submit</ModalButton>
       </ModalContainer>
     </GameModalWrapper>

@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { ICharacter } from "../../types";
 import GameCharacter from "./GameCharacter";
 import Button from "../../utils/Button";
-import { useNavigate } from "react-router-dom";
+import { deleteDoc } from "firebase/firestore";
 interface IProps {
   characters: ICharacter[];
+  deleteSession: () => void;
 }
 
-const GameCharacters = ({ characters }: IProps) => {
-  const navigate = useNavigate();
+const GameCharacters = ({ characters, deleteSession }: IProps) => {
   const loadGameCharacters = () => {
     return characters.map((character) => (
       <GameCharacter character={character} key={character.name} flow="column" />
@@ -16,8 +16,8 @@ const GameCharacters = ({ characters }: IProps) => {
   };
   return (
     <GameCharactersWrapper>
-      {loadGameCharacters()}{" "}
-      <GameButton color="black" onClick={() => navigate("/")}>
+      {loadGameCharacters()}
+      <GameButton color="black" onClick={deleteSession}>
         Go Back
       </GameButton>
     </GameCharactersWrapper>

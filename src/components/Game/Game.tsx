@@ -6,6 +6,7 @@ import Characters from "./Characters";
 import { useState, useEffect } from "react";
 import GameModal from "./GameModal";
 import { differenceInMilliseconds } from "date-fns";
+import { useNavigate } from "react-router-dom";
 import {
   getFirestore,
   collection,
@@ -13,6 +14,9 @@ import {
   addDoc,
   updateDoc,
   getDoc,
+  doc,
+  DocumentReference,
+  deleteDoc,
 } from "firebase/firestore";
 interface IProps {
   currentLevel: ILevel | null;
@@ -22,6 +26,7 @@ interface ICoordinates {
   y: number;
 }
 const Game = ({ currentLevel }: IProps) => {
+  const navigate = useNavigate();
   const [gameCharacters, setGameCharacters] = useState<ICharacter[] | null>(
     currentLevel ? JSON.parse(JSON.stringify(currentLevel.characters)) : null
   );
@@ -30,7 +35,9 @@ const Game = ({ currentLevel }: IProps) => {
     left: "0",
     visible: false,
   });
-  const [docReference, setDocReference] = useState<any>();
+  const [docReference, setDocReference] = useState<DocumentReference>(
+    doc(getFirestore(), "placeholder/placeholder")
+  );
   const [gameOver, setGameOver] = useState<boolean>(false);
   const changePositions = (e: React.MouseEvent<HTMLDivElement>): void => {
     const { x, y } = getCoordinates(e);
@@ -55,6 +62,10 @@ const Game = ({ currentLevel }: IProps) => {
       x,
       y,
     };
+  };
+  const deleteSession = () => {
+    deleteDoc(docReference);
+    navigate("/");
   };
   useEffect(() => {
     if (gameCharacters?.every((character) => character.found)) {
@@ -131,7 +142,10 @@ const Game = ({ currentLevel }: IProps) => {
   };
   return (
     <GameWrapper gameOver={gameOver}>
-      <GameCharacters characters={gameCharacters ? gameCharacters : []} />
+      <GameCharacters
+        characters={gameCharacters ? gameCharacters : []}
+        deleteSession={deleteSession}
+      />
       <GameContent onClick={changePositions} gameOver={gameOver}>
         <Characters
           characters={gameCharacters ? gameCharacters : []}
@@ -140,7 +154,7 @@ const Game = ({ currentLevel }: IProps) => {
         />
         <GameImg src={currentLevel?.imgSrc} gameOver={gameOver} />
       </GameContent>
-      <GameModal gameOver={gameOver} />
+      <GameModal gameOver={gameOver} deleteSession={deleteSession} />
     </GameWrapper>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { FaMedal, FaClock } from "react-icons/fa";
 import { ILevel, IData } from "../../types";
 import {
   query,
@@ -10,6 +11,7 @@ import {
   limit,
   orderBy,
 } from "firebase/firestore";
+import Text from "../../utils/Text";
 
 interface IProps {
   level: ILevel | null;
@@ -41,19 +43,32 @@ const Rankings = ({ level }: IProps) => {
     };
   }, [level]);
   const loadRankings = () => {
-    return rankings.map((userScore: IData, index: number) => (
-      <React.Fragment key={index}>
-        <RankingsText>{index + 1}</RankingsText>
-        <RankingsText>{userScore.username}</RankingsText>
-        <RankingsText>{userScore.seconds}</RankingsText>
-      </React.Fragment>
-    ));
+    return rankings.map((userScore: IData, index: number) => {
+      let topRanked = false;
+      if (index + 1 <= 3) {
+        topRanked = true;
+      }
+      return (
+        <RankingContainer key={index}>
+          <RankingsText index={index + 1}>
+            {topRanked ? <FaMedal /> : ""} <Text>{index + 1}</Text>
+          </RankingsText>
+          <RankingsText>{userScore.username}</RankingsText>
+          <RankingsText>{userScore.seconds}</RankingsText>
+        </RankingContainer>
+      );
+    });
   };
   return (
     <RankingsWrapper>
-      <RankingsTitle>Rank</RankingsTitle>
+      <RankingsTitle>
+        Rank <FaMedal />
+      </RankingsTitle>
       <RankingsTitle>Username</RankingsTitle>
-      <RankingsTitle>Time (Seconds)</RankingsTitle>
+      <RankingsTitle>
+        Time (Seconds)
+        <FaClock />
+      </RankingsTitle>
       {loadRankings()}
     </RankingsWrapper>
   );
@@ -62,29 +77,68 @@ const RankingsWrapper = styled.div`
   display: grid;
   width: 100%;
   border: 1px solid ${({ theme }) => theme.palette.common.black};
-  padding: 0.5rem;
+  padding: 2rem 0rem;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
   row-gap: 1rem;
-  > {
-    border: 1px solid ${({ theme }) => theme.palette.common.grey};
-  }
 `;
 
 const RankingsTitle = styled.h4`
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-family: "Cabin", sans-serif;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  @media only screen and (min-width: 540px) {
+    font-size: 1.6rem;
+  }
+  @media only screen and (min-width: 540px) {
+    font-size: 1.8rem;
+  }
 `;
-const RankingsText = styled.h5`
-  font-size: 1.4rem;
+const RankingsText = styled.h5<{ index?: number }>`
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.45rem;
+  font-size: 1rem;
   font-family: "Poppins", sans-serif;
+  ${({ index }) =>
+    index === 1 &&
+    css`
+      color: gold;
+    `}
+  ${({ index }) =>
+    index === 2 &&
+    css`
+      color: silver;
+    `}
+    ${({ index }) =>
+    index === 3 &&
+    css`
+      color: #bf360c;
+    `}
+    ${({ index }) =>
+    index &&
+    index > 3 &&
+    css`
+      margin-left: 1.5rem;
+    `}
+  @media only screen and (min-width: 540px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const RankingContainer = styled.div`
+  display: grid;
   grid-column: 1/-1;
-  display: flex;
-  justify-content: space-between;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
   width: 100%;
+  padding: 1.5rem 0rem;
+  border-top: 1px solid ${({ theme }) => theme.palette.common.grey};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.common.grey};
 `;
 export default Rankings;

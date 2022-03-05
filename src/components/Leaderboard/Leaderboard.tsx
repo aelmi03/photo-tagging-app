@@ -2,6 +2,7 @@ import { ILevel } from "../../types";
 import styled from "styled-components";
 import Button from "../../utils/Button";
 import GameLevel from "./GameLevel";
+import Rankings from "./Rankings";
 
 interface IProps {
   currentLevel: ILevel | null;
@@ -29,6 +30,7 @@ const Leaderboard = ({ currentLevel, levels, changeCurrentLevel }: IProps) => {
         <LeaderboardButton color="red">Go Back</LeaderboardButton>
       </LeaderboardContainer>
       <LeaderboardLevels>{loadGameLevels()}</LeaderboardLevels>
+      <Rankings level={currentLevel} />
     </LeaderboardWrapper>
   );
 };
@@ -37,7 +39,7 @@ const LeaderboardWrapper = styled.div`
   padding: 2rem 0.75rem;
   display: flex;
   flex-flow: column nowrap;
-  gap: 2rem;
+  gap: 3.5rem;
   @media only screen and (min-width: 540px) {
     padding: 2.5rem 2rem;
   }
@@ -56,6 +58,9 @@ const LeaderboardLevels = styled.div`
   @media only screen and (min-width: 1024px) {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
+  @media only screen and (min-width: 1220px) {
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  }
 `;
 const LeaderboardContainer = styled.div`
   display: flex;
@@ -64,7 +69,7 @@ const LeaderboardContainer = styled.div`
 `;
 const LeaderboardTitle = styled.h1`
   font-family: "Poppins", sans-serif;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: bold;
   text-align: center;
   @media only screen and (min-width: 540px) {

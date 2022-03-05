@@ -11,7 +11,7 @@ const Theme: DefaultTheme = {
       main: "#4C8BF5",
       contrastText: "#FFFFFF",
     },
-    lightPrimary: "#b3e5fc",
+    lightPrimary: "#d9e8f1",
     secondary: {
       main: "#455a64",
       contrastText: "#FFFFFF",

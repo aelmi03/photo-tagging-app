@@ -33,7 +33,7 @@ const GameLevelWrapper = styled.div<{ isCurrentLevel: boolean }>`
     isCurrentLevel === true &&
     css`
       background-color: ${({ theme }) => theme.palette.lightPrimary};
-    `}
+    `};
 `;
 const GameLevelImg = styled.img`
   width: 100%;

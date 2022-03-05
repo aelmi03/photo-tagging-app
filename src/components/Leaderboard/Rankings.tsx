@@ -78,19 +78,20 @@ const Rankings = ({ level }: IProps) => {
 };
 const RankingsWrapper = styled.div`
   display: grid;
-  width: 100%;
-  border: 1px solid ${({ theme }) => theme.palette.secondary.main};
-  padding: 2rem 0rem;
+  width: min(100%, 1500px);
+  box-shadow: 0px 0px 5px ${({ theme }) => theme.palette.secondary.main};
+  padding: 2rem 0rem 0rem 0rem;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
   border-radius: 5px;
+
   > :nth-child(1) {
     border: none;
     border-bottom: 1px solid ${({ theme }) => theme.palette.common.grey};
   }
   > :last-child {
-    border-bottom: 2px solid ${({ theme }) => theme.palette.common.grey};
+    border-bottom: none;
   }
 `;
 

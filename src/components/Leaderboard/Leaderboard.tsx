@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "../../utils/Button";
 import GameLevel from "./GameLevel";
 import Rankings from "./Rankings";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   currentLevel: ILevel | null;
@@ -10,6 +11,8 @@ interface IProps {
   changeCurrentLevel: (level: ILevel) => void;
 }
 const Leaderboard = ({ currentLevel, levels, changeCurrentLevel }: IProps) => {
+  const navigate = useNavigate();
+
   const loadGameLevels = () => {
     return levels.map((level: ILevel) => {
       const isCurrentLevel = currentLevel === level ? true : false;
@@ -27,8 +30,12 @@ const Leaderboard = ({ currentLevel, levels, changeCurrentLevel }: IProps) => {
     <LeaderboardWrapper>
       <LeaderboardTitle>Leaderboard</LeaderboardTitle>
       <LeaderboardContainer>
-        <LeaderboardButton color="blue">Play Level</LeaderboardButton>
-        <LeaderboardButton color="red">Go Back</LeaderboardButton>
+        <LeaderboardButton color="blue" onClick={() => navigate("/game")}>
+          Play Level
+        </LeaderboardButton>
+        <LeaderboardButton color="red" onClick={() => navigate("/")}>
+          Go Back
+        </LeaderboardButton>
       </LeaderboardContainer>
       <LeaderboardLevels>{loadGameLevels()}</LeaderboardLevels>
       <Rankings level={currentLevel} />
@@ -37,10 +44,13 @@ const Leaderboard = ({ currentLevel, levels, changeCurrentLevel }: IProps) => {
 };
 
 const LeaderboardWrapper = styled.div`
-  padding: 2rem 0.75rem;
+  padding: 2rem 0.4rem;
   display: flex;
   flex-flow: column nowrap;
   gap: 3.5rem;
+  @media only screen and (min-width: 414px) {
+    padding: 2.2rem 1rem;
+  }
   @media only screen and (min-width: 540px) {
     padding: 2.5rem 2rem;
   }

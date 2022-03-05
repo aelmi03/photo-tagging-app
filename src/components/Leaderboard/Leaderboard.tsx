@@ -6,11 +6,19 @@ import GameLevel from "./GameLevel";
 interface IProps {
   currentLevel: ILevel | null;
   levels: ILevel[];
+  changeCurrentLevel: (level: ILevel) => void;
 }
-const Leaderboard = ({ currentLevel, levels }: IProps) => {
+const Leaderboard = ({ currentLevel, levels, changeCurrentLevel }: IProps) => {
   const loadGameLevels = () => {
     return levels.map((level: ILevel) => {
-      return <GameLevel level={level} isCurrentLevel={false} />;
+      const isCurrentLevel = currentLevel === level ? true : false;
+      return (
+        <GameLevel
+          level={level}
+          isCurrentLevel={isCurrentLevel}
+          changeCurrentLevel={changeCurrentLevel}
+        />
+      );
     });
   };
   return (
@@ -45,6 +53,9 @@ const LeaderboardLevels = styled.div`
   @media only screen and (min-width: 760px) {
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   }
+  @media only screen and (min-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 `;
 const LeaderboardContainer = styled.div`
   display: flex;
@@ -66,6 +77,14 @@ const LeaderboardTitle = styled.h1`
 const LeaderboardButton = styled(Button)`
   padding: 0.75rem 2.5rem;
   font-size: 1.2rem;
+  @media only screen and (min-width: 540px) {
+    font-size: 1.4rem;
+    padding: 1rem 4rem;
+  }
+  @media only screen and (min-width: 768px) {
+    font-size: 1.6rem;
+    padding: 1.2rem 4.8rem;
+  }
 `;
 
 export default Leaderboard;

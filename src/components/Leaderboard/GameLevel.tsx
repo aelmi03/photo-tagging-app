@@ -4,11 +4,18 @@ import { ILevel } from "../../types";
 interface IProps {
   level: ILevel;
   isCurrentLevel: boolean;
+  changeCurrentLevel: (level: ILevel) => void;
 }
 
-const GameLevel = ({ level, isCurrentLevel }: IProps) => {
+const GameLevel = ({ level, isCurrentLevel, changeCurrentLevel }: IProps) => {
   return (
-    <GameLevelWrapper isCurrentLevel={isCurrentLevel}>
+    <GameLevelWrapper
+      isCurrentLevel={isCurrentLevel}
+      onClick={() => {
+        if (isCurrentLevel) return;
+        changeCurrentLevel(level);
+      }}
+    >
       <GameLevelImg src={level.imgSrc} />
       <GameLevelText>Level {level.level}</GameLevelText>
     </GameLevelWrapper>
@@ -37,5 +44,8 @@ const GameLevelText = styled.div`
   font-size: 1.3rem;
   font-family: "Josefin Sans", sans-serif;
   color: ${({ theme }) => theme.palette.common.black};
+  @media only screen and (min-width: 540px) {
+    font-size: 1.55rem;
+  }
 `;
 export default GameLevel;

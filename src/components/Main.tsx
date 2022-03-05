@@ -13,6 +13,7 @@ import {
 import { ILevel } from "../types";
 import { useEffect, useState } from "react";
 import Game from "./Game/";
+import Leaderboard from "./Leaderboard";
 import gameLevels from "../utils/levels";
 const Main = () => {
   const [levels, setLevels] = useState<ILevel[] | null>(null);
@@ -24,6 +25,7 @@ const Main = () => {
       (doc) => doc.data() as ILevel
     );
     setLevels(loadedLevels);
+    setCurrentLevel(loadedLevels[0]);
   };
   function changeCurrentLevel(level: ILevel) {
     if (currentLevel === level) return;
@@ -51,6 +53,15 @@ const Main = () => {
                 levels={levels ? levels : []}
                 changeCurrentLevel={changeCurrentLevel}
               />
+            </React.Fragment>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <React.Fragment>
+              <Header />
+              <Leaderboard currentLevel={currentLevel} />
             </React.Fragment>
           }
         />

@@ -1,14 +1,22 @@
 import styled from "styled-components";
 import Text from "../../utils/Text";
 import Button from "../../utils/Button";
+import { useNavigate } from "react-router-dom";
 const LeaderboardPreview = () => {
+  const navigate = useNavigate();
   return (
     <LeaderboardPreviewWrapper>
       <LeaderboardTitle>Are You A Waldo Professional?</LeaderboardTitle>
       <LeaderboardTitle>
         See Where You Rank Against Other Players!
       </LeaderboardTitle>
-      <LeaderboardButton color="blue" border="white">
+      <LeaderboardButton
+        color="blue"
+        border="white"
+        onClick={() => {
+          navigate("/leaderboard");
+        }}
+      >
         View Leaderboard
       </LeaderboardButton>
     </LeaderboardPreviewWrapper>

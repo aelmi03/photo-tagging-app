@@ -51,7 +51,7 @@ const Rankings = ({ level }: IProps) => {
       return (
         <RankingContainer key={index}>
           <RankingsText index={index + 1}>
-            {topRanked ? <FaMedal /> : ""} <Text>{index + 1}</Text>
+            {topRanked ? <FaMedal /> : ""} <UniqueText>{index + 1}</UniqueText>
           </RankingsText>
           <RankingsText>{userScore.username}</RankingsText>
           <RankingsText>{userScore.seconds}</RankingsText>
@@ -61,14 +61,17 @@ const Rankings = ({ level }: IProps) => {
   };
   return (
     <RankingsWrapper>
-      <RankingsTitle>
-        Rank <FaMedal />
-      </RankingsTitle>
-      <RankingsTitle>Username</RankingsTitle>
-      <RankingsTitle>
-        Time (Seconds)
-        <FaClock />
-      </RankingsTitle>
+      <RankingContainer>
+        <RankingsTitle>
+          Rank <FaMedal />
+        </RankingsTitle>
+        <RankingsTitle>Username</RankingsTitle>
+        <RankingsTitle>
+          Time (Seconds)
+          <FaClock />
+        </RankingsTitle>
+      </RankingContainer>
+
       {loadRankings()}
     </RankingsWrapper>
   );
@@ -76,12 +79,19 @@ const Rankings = ({ level }: IProps) => {
 const RankingsWrapper = styled.div`
   display: grid;
   width: 100%;
-  border: 1px solid ${({ theme }) => theme.palette.common.black};
+  border: 1px solid ${({ theme }) => theme.palette.secondary.main};
   padding: 2rem 0rem;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
-  row-gap: 1rem;
+  border-radius: 5px;
+  > :nth-child(1) {
+    border: none;
+    border-bottom: 1px solid ${({ theme }) => theme.palette.common.grey};
+  }
+  > :last-child {
+    border-bottom: 2px solid ${({ theme }) => theme.palette.common.grey};
+  }
 `;
 
 const RankingsTitle = styled.h4`
@@ -91,11 +101,20 @@ const RankingsTitle = styled.h4`
   flex-flow: row nowrap;
   align-items: center;
   gap: 0.5rem;
+  color: ${({ theme }) => theme.palette.secondary.main};
   @media only screen and (min-width: 540px) {
     font-size: 1.6rem;
   }
   @media only screen and (min-width: 540px) {
     font-size: 1.8rem;
+  }
+`;
+const UniqueText = styled.h4`
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  color: ${({ theme }) => theme.palette.common.black};
+  @media only screen and (min-width: 540px) {
+    font-size: 1.5rem;
   }
 `;
 const RankingsText = styled.h5<{ index?: number }>`
@@ -137,7 +156,7 @@ const RankingContainer = styled.div`
   justify-items: center;
   align-items: center;
   width: 100%;
-  padding: 1.5rem 0rem;
+  padding: 1.8rem 0rem;
   border-top: 1px solid ${({ theme }) => theme.palette.common.grey};
   border-bottom: 1px solid ${({ theme }) => theme.palette.common.grey};
 `;

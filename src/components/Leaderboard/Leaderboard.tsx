@@ -18,6 +18,7 @@ const Leaderboard = ({ currentLevel, levels, changeCurrentLevel }: IProps) => {
           level={level}
           isCurrentLevel={isCurrentLevel}
           changeCurrentLevel={changeCurrentLevel}
+          key={level.level}
         />
       );
     });

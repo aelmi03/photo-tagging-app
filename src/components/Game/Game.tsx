@@ -75,7 +75,7 @@ const Game = ({ currentLevel }: IProps) => {
     updateDoc(docReference, {
       username: name,
     });
-    navigate("/");
+    navigate("/leaderboard");
   };
   useEffect(() => {
     if (gameCharacters?.every((character) => character.found)) {
@@ -157,7 +157,9 @@ const Game = ({ currentLevel }: IProps) => {
   };
   return (
     <GameWrapper gameOver={gameOver}>
-      <FoundStatus>{foundStatusText}</FoundStatus>
+      <FoundStatus foundStatusText={foundStatusText}>
+        {foundStatusText}
+      </FoundStatus>
 
       <GameCharacters
         characters={gameCharacters ? gameCharacters : []}
@@ -205,17 +207,17 @@ const GameContent = styled.div<{ gameOver: boolean }>`
       z-index: -1;
     `}
 `;
-const FoundStatus = styled.div`
+const FoundStatus = styled.div<{ foundStatusText: string }>`
   background-color: ${({ theme }) => theme.palette.primary.main};
   color: ${({ theme }) => theme.palette.primary.contrastText};
   padding: 0.8rem 1.3rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-family: "Poppins", sans-serif;
   border-radius: 5px;
   z-index: 10;
   position: fixed;
   width: max-content;
-  top: 85px;
+  top: 70px;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -226,6 +228,11 @@ const FoundStatus = styled.div`
   @media only screen and (min-width: 768px) {
     font-size: 1.55rem;
   }
-  /* bring your own prefixes */
+  ${({ foundStatusText }) =>
+    foundStatusText === "" &&
+    css`
+      width: 0;
+      padding: 0;
+    `}
 `;
 export default Game;

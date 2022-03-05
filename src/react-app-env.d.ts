@@ -17,6 +17,7 @@ declare module "styled-components" {
       primary: IPalette;
       secondary: IPalette;
       tertiary: IPallete;
+      lightPrimary: string;
     };
   }
 }

@@ -61,7 +61,10 @@ const Main = () => {
           element={
             <React.Fragment>
               <Header />
-              <Leaderboard currentLevel={currentLevel} />
+              <Leaderboard
+                currentLevel={currentLevel}
+                levels={levels ? levels : []}
+              />
             </React.Fragment>
           }
         />

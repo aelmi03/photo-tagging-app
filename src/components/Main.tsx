@@ -42,7 +42,7 @@ const Main = () => {
     });
   };
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route
           path="/"

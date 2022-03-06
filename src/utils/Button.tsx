@@ -34,6 +34,14 @@ const Button = styled.button<ColorProps>`
     css`
       border: 2px solid ${({ theme }) => theme.palette.common.white};
     `}
+    
+    ${(props) =>
+    props.color === "white-blue" &&
+    css`
+      color: ${({ theme }) => theme.palette.primary.main};
+      box-shadow: 0px 0px 4px ${({ theme }) => theme.palette.secondary.main};
+      background-color: white;
+    `}
 `;
 
 export default Button;

@@ -33,7 +33,7 @@ const Leaderboard = ({ currentLevel, levels, changeCurrentLevel }: IProps) => {
         <LeaderboardButton color="blue" onClick={() => navigate("/game")}>
           Play Level
         </LeaderboardButton>
-        <LeaderboardButton color="red" onClick={() => navigate("/")}>
+        <LeaderboardButton color="white-blue" onClick={() => navigate("/")}>
           Go Back
         </LeaderboardButton>
       </LeaderboardContainer>

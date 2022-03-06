@@ -38,7 +38,7 @@ const GameModal = ({
         ></ModalInput>
       </ModalContainer>
       <ModalContainer flow="row" gap="1.5rem">
-        <ModalButton color="red" onClick={deleteSession}>
+        <ModalButton color="white-blue" onClick={deleteSession}>
           Cancel
         </ModalButton>
         <ModalButton

@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/photo-tagging-app/static/js/main.12bca85d.js",
+    "main.js": "/photo-tagging-app/static/js/main.f4357880.js",
     "static/media/waldo.png": "/photo-tagging-app/static/media/waldo.51a40e650a42869bdbab.png",
     "index.html": "/photo-tagging-app/index.html",
-    "main.12bca85d.js.map": "/photo-tagging-app/static/js/main.12bca85d.js.map"
+    "main.f4357880.js.map": "/photo-tagging-app/static/js/main.f4357880.js.map"
   },
   "entrypoints": [
-    "static/js/main.12bca85d.js"
+    "static/js/main.f4357880.js"
   ]
 }

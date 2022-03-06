@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/photo-tagging-app/static/js/main.01de84e7.js",
+    "static/media/waldo.png": "/photo-tagging-app/static/media/waldo.51a40e650a42869bdbab.png",
+    "index.html": "/photo-tagging-app/index.html",
+    "main.01de84e7.js.map": "/photo-tagging-app/static/js/main.01de84e7.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.01de84e7.js"
+  ]
+}

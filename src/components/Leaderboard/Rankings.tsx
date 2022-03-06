@@ -19,7 +19,6 @@ interface IProps {
 
 const Rankings = ({ level }: IProps) => {
   const [rankings, setRankings] = useState<IData[]>([]);
-  console.log(rankings);
 
   useEffect(() => {
     const updateRankings = () => {
@@ -110,7 +109,7 @@ const RankingsTitle = styled.h4`
     font-size: 1.8rem;
   }
 `;
-const UniqueText = styled.h4`
+const UniqueText = styled.span`
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
   color: ${({ theme }) => theme.palette.common.black};

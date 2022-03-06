@@ -43,10 +43,7 @@ const CharactersWrapper = styled.div<{ positions: IPosition }>`
   border-radius: 5px;
   box-shadow: 0px 0px 3px ${({ theme }) => theme.palette.secondary.main};
   @media only screen and (min-width: 540px) {
-    width: 120px;
-  }
-  @media only screen and (min-width: 768px) {
-    width: 170px;
+    width: 125px;
   }
 `;
 export default Characters;

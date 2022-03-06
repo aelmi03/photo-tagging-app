@@ -86,10 +86,6 @@ const StyledCharacter = styled(Character)<{ flow: string }>`
       css`
         width: 40px;
         height: 40px;
-        @media only screen and (min-width: 768px) {
-          width: 45px;
-          height: 45px;
-        }
       `}
   }
 `;

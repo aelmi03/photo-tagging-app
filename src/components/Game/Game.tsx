@@ -49,7 +49,6 @@ const Game = ({ currentLevel }: IProps) => {
       visible: true,
     });
     setFoundStatusText("");
-    console.log(`X : ${x}   Y : ${y}`);
   };
   const getCoordinates = (
     e: React.MouseEvent<HTMLDivElement>

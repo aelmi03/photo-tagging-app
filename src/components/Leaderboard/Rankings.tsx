@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { FaMedal, FaClock } from "react-icons/fa";
 import { ILevel, IData } from "../../types";
@@ -9,9 +9,7 @@ import {
   where,
   onSnapshot,
   limit,
-  orderBy,
 } from "firebase/firestore";
-import Text from "../../utils/Text";
 
 interface IProps {
   level: ILevel | null;

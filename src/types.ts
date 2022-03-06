@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 export interface ICharacter {
   imgSrc: string;
   name: string;
@@ -19,8 +20,8 @@ export interface IPosition {
 
 export interface IData {
   level: string;
-  startedAt: string;
-  endedAt: string;
+  startedAt: Timestamp;
+  endedAt: Timestamp;
   seconds: string;
   username: string;
 }

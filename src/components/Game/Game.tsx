@@ -84,7 +84,7 @@ const Game = ({ currentLevel }: IProps) => {
   useEffect(() => {
     const determineSeconds = async () => {
       const gameDoc = await getDoc(docReference);
-      const gameData = gameDoc.data() as any;
+      const gameData = gameDoc.data() as IData;
       const seconds =
         differenceInMilliseconds(
           gameData.endedAt.toDate(),

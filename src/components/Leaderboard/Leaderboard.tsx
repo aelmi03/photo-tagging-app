@@ -48,11 +48,16 @@ const LeaderboardWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
   gap: 3.5rem;
+  align-items: center;
   @media only screen and (min-width: 414px) {
     padding: 2.2rem 1rem;
   }
   @media only screen and (min-width: 540px) {
     padding: 2.5rem 2rem;
+    gap: 5rem;
+  }
+  @media only screen and (min-width: 540px) {
+    padding: 3.5rem 2.5rem;
   }
 `;
 const LeaderboardLevels = styled.div`
@@ -67,16 +72,18 @@ const LeaderboardLevels = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   }
   @media only screen and (min-width: 1024px) {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.9rem;
   }
-  @media only screen and (min-width: 1220px) {
-    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  @media only screen and (min-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 `;
 const LeaderboardContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
   gap: 1rem;
+  align-self: start;
 `;
 const LeaderboardTitle = styled.h1`
   font-family: "Poppins", sans-serif;
@@ -89,6 +96,9 @@ const LeaderboardTitle = styled.h1`
   @media only screen and (min-width: 768px) {
     font-size: 3.5rem;
   }
+  @media only screen and (min-width: 1024px) {
+    font-size: 3.8rem;
+  }
 `;
 const LeaderboardButton = styled(Button)`
   padding: 0.75rem 2.5rem;
@@ -100,6 +110,10 @@ const LeaderboardButton = styled(Button)`
   @media only screen and (min-width: 768px) {
     font-size: 1.6rem;
     padding: 1.2rem 4.8rem;
+  }
+  @media only screen and (min-width: 1024px) {
+    font-size: 1.85rem;
+    padding: 1.35rem 5rem;
   }
 `;
 

@@ -69,6 +69,9 @@ const GameCharacterText = styled(Text)<{ flow: string }>`
       flow === "row" &&
       css`
         font-size: 1.3rem;
+        @media only screen and (min-width: 768px) {
+          font-size: 1.8rem;
+        }
       `}
   }
 `;
@@ -86,6 +89,10 @@ const StyledCharacter = styled(Character)<{ flow: string }>`
       css`
         width: 40px;
         height: 40px;
+        @media only screen and (min-width: 1024px) {
+          width: 50px;
+          height: 50px;
+        }
       `}
   }
 `;

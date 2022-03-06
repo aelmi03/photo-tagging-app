@@ -45,5 +45,8 @@ const CharactersWrapper = styled.div<{ positions: IPosition }>`
   @media only screen and (min-width: 540px) {
     width: 125px;
   }
+  @media only screen and (min-width: 1024px) {
+    width: 150px;
+  }
 `;
 export default Characters;

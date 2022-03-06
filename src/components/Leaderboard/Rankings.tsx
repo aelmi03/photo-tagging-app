@@ -106,13 +106,16 @@ const RankingsTitle = styled.h4`
   @media only screen and (min-width: 540px) {
     font-size: 1.8rem;
   }
+  @media only screen and (min-width: 768px) {
+    font-size: 2.1rem;
+  }
 `;
 const UniqueText = styled.span`
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
   color: ${({ theme }) => theme.palette.common.black};
   @media only screen and (min-width: 540px) {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 `;
 const RankingsText = styled.h5<{ index?: number }>`
@@ -143,7 +146,10 @@ const RankingsText = styled.h5<{ index?: number }>`
       margin-left: 1.5rem;
     `}
   @media only screen and (min-width: 540px) {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+  }
+  @media only screen and (min-width: 768px) {
+    font-size: 1.8rem;
   }
 `;
 

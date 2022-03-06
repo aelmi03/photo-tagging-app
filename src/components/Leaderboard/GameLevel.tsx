@@ -37,7 +37,10 @@ const GameLevelWrapper = styled.div<{ isCurrentLevel: boolean }>`
 `;
 const GameLevelImg = styled.img`
   width: 100%;
-  height: 150px;
+  height: 130px;
+  @media only screen and (min-width: 768px) {
+    height: 200px;
+  }
 `;
 const GameLevelText = styled.div`
   padding: 1rem 1.5rem;
@@ -46,6 +49,9 @@ const GameLevelText = styled.div`
   color: ${({ theme }) => theme.palette.common.black};
   @media only screen and (min-width: 540px) {
     font-size: 1.55rem;
+  }
+  @media only screen and (min-width: 768px) {
+    font-size: 2rem;
   }
 `;
 export default GameLevel;

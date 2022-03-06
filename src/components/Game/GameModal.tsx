@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import Button from "../../utils/Button";
 import Text from "../../utils/Text";
+import Filter from "bad-words";
 import React, { useState } from "react";
 
 interface IProps {
@@ -43,7 +44,9 @@ const GameModal = ({
         <ModalButton
           color="blue"
           onClick={() => {
-            addUsername(username);
+            const filter = new Filter({ placeHolder: "❤" });
+
+            addUsername(filter.clean(username));
           }}
           disabled={!username}
         >

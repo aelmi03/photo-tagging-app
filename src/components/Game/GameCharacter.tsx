@@ -42,7 +42,9 @@ const GameCharacterWrapper = styled.div<{ flow: string; found: boolean }>`
   ${({ flow }) =>
     flow === "row" &&
     css`
-      padding: 1rem;
+      gap: 0rem;
+      justify-content: space-around;
+      padding: 0.5rem;
       min-width: 100%;
       cursor: pointer;
       &:hover {
@@ -79,6 +81,12 @@ const GameCharacterText = styled(Text)<{ flow: string }>`
 const StyledCharacter = styled(Character)<{ flow: string }>`
   width: 25px;
   height: 25px;
+  ${({ flow }) =>
+    flow === "row" &&
+    css`
+      width: 20px;
+      height: 20px;
+    `}
   @media only screen and (min-width: 540px) {
     width: 65px;
     height: 65px;

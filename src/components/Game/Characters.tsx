@@ -36,17 +36,21 @@ const CharactersWrapper = styled.div<{ positions: IPosition }>`
   top: ${({ positions }) => positions.top}%;
   left: ${({ positions }) => positions.left}%;
   height: max-content;
-  width: 90px;
+  max-height: 120px;
+  width: 60px;
   align-items: center;
   justify-items: center;
   background-color: ${({ theme }) => theme.palette.common.white};
   border-radius: 5px;
   box-shadow: 0px 0px 3px ${({ theme }) => theme.palette.secondary.main};
   @media only screen and (min-width: 540px) {
-    width: 125px;
+    max-height: 180px;
+
+    width: 100px;
   }
   @media only screen and (min-width: 1024px) {
     width: 150px;
+    max-height: 230px;
   }
 `;
 export default Characters;

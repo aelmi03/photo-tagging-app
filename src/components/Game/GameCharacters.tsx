@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { ICharacter } from "../../types";
 import GameCharacter from "./GameCharacter";
 import Button from "../../utils/Button";
-import { deleteDoc } from "firebase/firestore";
 interface IProps {
   characters: ICharacter[];
   deleteSession: () => void;
